@@ -1,5 +1,18 @@
 # OM Startrack
 
+> **Warning: use at your own risk.** This firmware could permanently brick your
+> camera or cause physical hardware damage. Everything in this repository is
+> provided **as is, without warranty of any kind**. To the fullest extent
+> permitted by law, the authors and contributors disclaim all liability for any
+> claims, losses, or damages arising from the use of anything in this repository.
+
+Note, this repo is just a snapshot of a side project. Don't expect any support or new features.
+
+All the code is AI generated, but it does work and I have tested the firmware files generated
+by this repo on my real cameras ¯\\\_(ツ)\_/¯
+
+See blog post describing this project [here](https://benwang.dev/2026/11/18/OM1-In-Body-Star-Tracker.html).
+
 Star detection, phone-side plate solving, gyro attitude telemetry, and IBIS
 sidereal tracking for **OM-1 firmware 1.9** and **OM-1 Mark II firmware 1.3**.
 These are the only supported inputs. `patch_firmware.py --list` prints their
@@ -112,3 +125,9 @@ The firmware integration check requires the user's official input: run the
 patch command above for each model. Generated firmware and build directories
 are ignored by Git. Third-party app and data notices are retained under
 `phone/`; no license to redistribute vendor firmware is implied.
+
+## License
+
+Unless otherwise noted, original code and documentation in this repository
+are licensed under the [Apache License 2.0](LICENSE). Third-party code,
+dependencies, and data retain their respective licenses and notices.
