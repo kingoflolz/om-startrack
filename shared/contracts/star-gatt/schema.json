@@ -1,0 +1,543 @@
+{
+  "schema": "olympus-star-gatt-contract/1",
+  "byte_order": "little-endian",
+  "uuids": {
+    "star_service": "7e6d7a50-2c56-4f17-9c51-9a5f64b02450",
+    "control": "7e6d7a50-2c56-4f17-9c51-9a5f64b02451",
+    "state": "7e6d7a50-2c56-4f17-9c51-9a5f64b02452",
+    "shutter_catalog": "7e6d7a50-2c56-4f17-9c51-9a5f64b02453",
+    "aperture_catalog": "7e6d7a50-2c56-4f17-9c51-9a5f64b02454",
+    "iso_catalog": "7e6d7a50-2c56-4f17-9c51-9a5f64b02455",
+    "lease": "7e6d7a50-2c56-4f17-9c51-9a5f64b02456",
+    "cccd": "00002902-0000-1000-8000-00805f9b34fb"
+  },
+  "gatt": {
+    "service_handle_budget": 16,
+    "minimum_att_mtu": 160,
+    "preferred_att_mtu": 517,
+    "attribute_value_max": 512,
+    "control": {
+      "properties": [
+        "write",
+        "indicate"
+      ],
+      "permissions": [
+        "write"
+      ],
+      "cccd_enabled_hex": "0200"
+    },
+    "state": {
+      "properties": [
+        "read",
+        "write",
+        "notify"
+      ],
+      "permissions": [
+        "read",
+        "write"
+      ],
+      "cccd_enabled_hex": "0100",
+      "read_always_returns_partial_or_complete_state": true,
+      "read_unavailable_att_status": null
+    },
+    "catalog": {
+      "characteristics": [
+        "shutter_catalog",
+        "aperture_catalog",
+        "iso_catalog"
+      ],
+      "properties": [
+        "read"
+      ],
+      "permissions": [
+        "read"
+      ],
+      "unavailable_value_hex": "00"
+    },
+    "lease": {
+      "properties": [
+        "write"
+      ],
+      "permissions": [
+        "write"
+      ],
+      "readable": false
+    }
+  },
+  "constants": {
+    "api_version": 6,
+    "capture_recipe": 1,
+    "peaks": 129,
+    "done": 130,
+    "outcomes": {
+      "ok": 0,
+      "rejected_no_mutation": 1,
+      "failed_safe": 2,
+      "failed_unsafe": 3
+    },
+    "state_write_size": 27,
+    "state_fixed_size": 125,
+    "state_min_size": 125,
+    "state_max_size": 157,
+    "lens_name_max": 32,
+    "catalog_count_max": 128,
+    "catalog_value_max_size": 512,
+    "catalog_unavailable_count": 0,
+    "unavailable_index": 255,
+    "telemetry_period_ms": 100,
+    "notification_max_hz": 10,
+    "acceleration_fresh_timeout_ms": 500,
+    "ibis_q10_limit": 1024,
+    "detector_defaults": [
+      1280,
+      3,
+      1024,
+      768,
+      230,
+      1
+    ],
+    "lease_cancel_seconds": 0,
+    "lease_min_seconds": 1,
+    "lease_max_seconds": 120,
+    "lease_phone_seconds": 45,
+    "lease_renewal_seconds": 15,
+    "att_status": {
+      "success": 0,
+      "read_not_permitted": 2,
+      "write_not_permitted": 3,
+      "request_not_supported": 6,
+      "invalid_offset": 7,
+      "invalid_attribute_length": 13,
+      "unlikely_error": 14,
+      "value_not_allowed": 19,
+      "busy_or_stale": 128,
+      "cccd_improperly_configured": 253
+    },
+    "state_read_version": 7,
+    "state_prefix_size": 77,
+    "attitude_size": 48
+  },
+  "state_flags": {
+    "catalog_available": 1,
+    "actual_available": 2,
+    "recipe_available": 4,
+    "detector_available": 8,
+    "ibis_available": 16,
+    "acceleration_available": 32,
+    "recovery_target": 128,
+    "known_mask": 191
+  },
+  "ibis_flags": {
+    "q10_source_mapped": 1,
+    "q10_mirror_enabled": 2,
+    "q10_double_read_stable": 4,
+    "q10_observed_change_since_enable": 8,
+    "lens_command_source_mapped": 16,
+    "lens_command_snapshot_valid": 32,
+    "known_mask": 63
+  },
+  "acceleration_flags": {
+    "source_mapped": 1,
+    "layout_qualified": 2,
+    "snapshot_coherent": 4,
+    "source_fresh": 8,
+    "known_mask": 15,
+    "validity_mask": 15
+  },
+  "layouts": {
+    "state_write": [
+      {
+        "name": "version",
+        "offset": 0,
+        "type": "u8",
+        "constant": 6
+      },
+      {
+        "name": "expected_config_generation",
+        "offset": 1,
+        "type": "u32le",
+        "minimum": 1
+      },
+      {
+        "name": "expected_catalog_generation",
+        "offset": 5,
+        "type": "u32le",
+        "minimum": 1
+      },
+      {
+        "name": "live_target_indices",
+        "offset": 9,
+        "type": "u8",
+        "count": 3,
+        "maximum": 127
+      },
+      {
+        "name": "recipe_indices",
+        "offset": 12,
+        "type": "u8",
+        "count": 3,
+        "maximum": 127
+      },
+      {
+        "name": "detector",
+        "offset": 15,
+        "type": "u16le",
+        "count": 6
+      }
+    ],
+    "state": [
+      {
+        "name": "version",
+        "offset": 0,
+        "type": "u8",
+        "constant": 6
+      },
+      {
+        "name": "flags",
+        "offset": 1,
+        "type": "u8"
+      },
+      {
+        "name": "publication_generation",
+        "offset": 2,
+        "type": "u32le"
+      },
+      {
+        "name": "config_generation",
+        "offset": 6,
+        "type": "u32le",
+        "zero": "no_complete_mutable_snapshot"
+      },
+      {
+        "name": "catalog_generation",
+        "offset": 10,
+        "type": "u32le",
+        "zero": "catalog_unavailable"
+      },
+      {
+        "name": "worker_generation",
+        "offset": 14,
+        "type": "u32le",
+        "zero": "worker_not_launched"
+      },
+      {
+        "name": "actual_native",
+        "offset": 18,
+        "type": "i16le",
+        "count": 3,
+        "semantic": "opaque_equality_only"
+      },
+      {
+        "name": "actual_indices",
+        "offset": 24,
+        "type": "u8",
+        "count": 3
+      },
+      {
+        "name": "recipe_indices",
+        "offset": 27,
+        "type": "u8",
+        "count": 3
+      },
+      {
+        "name": "aperture_bounds",
+        "offset": 30,
+        "type": "u8",
+        "count": 2,
+        "semantic": "inclusive_catalog_indices"
+      },
+      {
+        "name": "focal_length_binary32",
+        "offset": 32,
+        "type": "u32le",
+        "zero": "unavailable",
+        "semantic": "focus_breathed_FLact_mm"
+      },
+      {
+        "name": "detector",
+        "offset": 36,
+        "type": "u16le",
+        "count": 6
+      },
+      {
+        "name": "ibis_flags",
+        "offset": 48,
+        "type": "u8"
+      },
+      {
+        "name": "ibis_sequence",
+        "offset": 49,
+        "type": "u16le"
+      },
+      {
+        "name": "ibis_q10",
+        "offset": 51,
+        "type": "i16le",
+        "count": 3
+      },
+      {
+        "name": "lens_command_generation",
+        "offset": 57,
+        "type": "u32le",
+        "zero": "snapshot_invalid",
+        "semantic": "main_uncached_mirror_nonzero_even_commit_generation"
+      },
+      {
+        "name": "lens_movestep_raw",
+        "offset": 61,
+        "type": "i16le",
+        "count": 2,
+        "lane_names": [
+          "commanded_yaw",
+          "commanded_pitch"
+        ],
+        "semantic": "coherent_main_callback_commanded_clamped_stock_protocol_snapshot_proxy"
+      },
+      {
+        "name": "acceleration_flags",
+        "offset": 65,
+        "type": "u8"
+      },
+      {
+        "name": "acceleration_main_generation",
+        "offset": 66,
+        "type": "u32le"
+      },
+      {
+        "name": "acceleration_mg",
+        "offset": 70,
+        "type": "i16le",
+        "count": 3
+      },
+      {
+        "name": "lens_length",
+        "offset": 76,
+        "type": "u8",
+        "maximum": 32
+      },
+      {
+        "name": "lens",
+        "offset": 77,
+        "type": "ascii",
+        "length_from": "lens_length",
+        "byte_min": 32,
+        "byte_max": 126
+      },
+      {
+        "name": "gyro_attitude",
+        "offset": "77 + lens_length",
+        "type": "gyro-attitude-v1",
+        "size": 48
+      }
+    ],
+    "catalog": [
+      {
+        "name": "count",
+        "offset": 0,
+        "type": "u8",
+        "minimum": 0,
+        "maximum": 128
+      },
+      {
+        "name": "labels",
+        "type": "length_prefixed_ascii_u8",
+        "count_from": "count",
+        "unique": true,
+        "minimum": 1,
+        "maximum": 31,
+        "byte_min": 33,
+        "byte_max": 126
+      },
+      {
+        "name": "complete_value_size",
+        "maximum": 512
+      }
+    ],
+    "lease": [
+      {
+        "name": "ttl_seconds",
+        "offset": 0,
+        "type": "u16le",
+        "allowed": "0_or_1_through_120"
+      }
+    ]
+  },
+  "generation_semantics": {
+    "scope": "companion_process",
+    "publication_generation": "increment_modulo_u32_on_every_installed_state_value_transition",
+    "config_generation": "nonzero_compare_and_set_generation_for_authoritative_actual_recipe_detector_snapshot",
+    "catalog_generation": "nonzero_generation_for_one_coherent_three_catalog_bank",
+    "worker_generation": "nonzero_generation_incremented_for_each_worker_launch",
+    "lens_command_generation": "nonzero even MAIN uncached-mirror callback commit generation; zero when the mirror sample is invalid",
+    "zero_reserved_for_unavailable_or_not_yet_observed": true
+  },
+  "catalog_coherence": {
+    "catalog_values_carry_generation": false,
+    "read_fence": [
+      "state_a",
+      "shutter_catalog",
+      "aperture_catalog",
+      "iso_catalog",
+      "state_b"
+    ],
+    "acceptance": "state_a_and_state_b_catalog_available_and_same_nonzero_catalog_generation",
+    "indices_are_bank_local_not_persistent_identity": true,
+    "unavailable_catalog_value_hex": "00"
+  },
+  "state_write_transaction": {
+    "complete_target_not_patch": true,
+    "compare_and_set_fields": [
+      "expected_config_generation",
+      "expected_catalog_generation"
+    ],
+    "generation_mismatch_att_status": 128,
+    "one_in_flight_with_control": true,
+    "att_success": "validated_and_reserved_not_applied",
+    "commit_order": "worker_certifies_live_target_then_recipe_and_detector_commit_atomically",
+    "failure_before_certified_live_target": "retain_prior_recipe_and_detector",
+    "semantic_completion": "later_authoritative_state_matches_live_recipe_and_detector_targets",
+    "automatic_replay": false
+  },
+  "partial_state": {
+    "read_never_returns_unlikely_error_for_unavailable_blocks": true,
+    "unavailable_index": 255,
+    "unavailable_actual_native": [
+      0,
+      0,
+      0
+    ],
+    "unavailable_focal_bits": 0,
+    "unavailable_detector": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "unavailable_ibis": {
+      "flags": 0,
+      "sequence": 0,
+      "q10_lanes": [
+        0,
+        0,
+        0
+      ],
+      "lens_command_generation": 0,
+      "lens_movestep_raw": [
+        0,
+        0
+      ]
+    },
+    "unavailable_acceleration": {
+      "flags": 0,
+      "main_generation": 0,
+      "lanes": [
+        0,
+        0,
+        0
+      ]
+    },
+    "recovery_target_semantic": "actual_fields_are_last_certified_required_target_not_certified_current_physical_state"
+  },
+  "current_implementation": {
+    "lens_gave_correction_supported": false,
+    "lens_movestep_supported": false,
+    "lens_movestep_main_publisher": false,
+    "lens_movestep_linux_sampling": false,
+    "lens_command_source_mapped": false,
+    "lens_command_snapshot_valid": false,
+    "lens_command_generation": 0,
+    "lens_movestep_raw": [
+      0,
+      0
+    ],
+    "body_q10_validity_independent": true,
+    "lens_packet_fields_validated": true
+  },
+  "lens_command_snapshot": {
+    "implementation_scope": "reserved wire fields; current publisher is stubbed",
+    "ibis_sub_block": true,
+    "experimental": false,
+    "semantic": "coherent_Linux_observation_of_the_MAIN_callback_commanded_and_clamped_lens_OIS_target_proxy",
+    "protocol_lane_order": [
+      "commanded_yaw",
+      "commanded_pitch"
+    ],
+    "wire_type": "signed_i16_raw_MOVESTEP",
+    "absolute_not_delta": true,
+    "hall_actual": false,
+    "image_axis_or_polarity_proven": false,
+    "physical_degree_units": false,
+    "source_mapped_flag": 16,
+    "snapshot_valid_flag": 32,
+    "validity": "source mapped; exact MOV1 magic before and after one stable nonzero-even MAIN generation around the packed pair; zero scale and reserved tail",
+    "runtime_scale_available_from_qualified_source": false,
+    "canonical_invalid": {
+      "snapshot_valid": false,
+      "generation": 0,
+      "lanes": [
+        0,
+        0
+      ]
+    },
+    "source_writer": "patched_MAIN_LensInfo_callback",
+    "invalidated_on_lens_detach_or_error": false,
+    "retains_last_success_across_detach_or_read_error": true,
+    "freshness_or_attachment_guaranteed": false,
+    "coherence_guaranteed": true,
+    "main_uncached_visibility_to_linux": true,
+    "time_to_live": null,
+    "constant_or_stale_value_may_remain_valid": true,
+    "q10_validity_independent": true,
+    "state_ibis_available_when": "q10 source mapped or lens command source mapped",
+    "generation": {
+      "source": "main_uncached_mirror_callback_commit",
+      "initial": 2,
+      "increment": 2,
+      "advance_on": [
+        "every_patched_LensInfo_callback_publication"
+      ],
+      "same_pair_reuses_generation": false,
+      "wraps_to": 2,
+      "stock_callback_publication_counter": true
+    },
+    "uncached_main_mirror": {
+      "main_uncached": "0xa0047af0",
+      "linux_physical": "0x2a0047af0",
+      "size": 16,
+      "magic_offset": 0,
+      "magic_u32le": "0x31564f4d",
+      "magic_bytes_ascii": "MOV1",
+      "generation_offset": 4,
+      "generation_type": "u32le_seqlock",
+      "packed_movestep_offset": 8,
+      "scale_offset": 12,
+      "scale_type": "u16le_required_zero",
+      "reserved_offset": 14,
+      "reserved_type": "u16le_required_zero",
+      "erased_boot_hex": "ffffffffffffffffffffffffffffffff",
+      "erased_boot_valid": false,
+      "acceptance": "exact_magic_before_and_after_same_nonzero_even_generation_around_one_packed_pair_read_and_zero_tail",
+      "transient_changed_magic_or_generation_or_odd_generation_retains_previous_snapshot": true,
+      "stable_structural_invalidity_clears_public_snapshot": true,
+      "passive_linux_sampling_period_ms": 100,
+      "linux_sampling_does_not_issue_lens_requests": true
+    }
+  },
+  "notification_semantics": {
+    "cccd_enable_sends_immediate_baseline": true,
+    "subsequent_max_hz": 10,
+    "coalesces_intermediate_values": true,
+    "read_repairs_loss": true,
+    "max_value_fits_minimum_mtu": true
+  },
+  "surface_policy": {
+    "camera_exposes": [
+      "stock_olympus",
+      "star",
+      "astro_rate_v2"
+    ],
+    "requires_current_service": true
+  }
+}

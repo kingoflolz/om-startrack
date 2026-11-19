@@ -1,0 +1,29 @@
+[package]
+name = "tetra3-cli"
+description = "Reproducible catalog and flash-index builder for om-tetra3"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "tetra3"
+path = "src/main.rs"
+doc = false
+
+[dependencies]
+clap.workspace = true
+csv.workspace = true
+flate2 = { version = "1.1.2", default-features = false, features = ["rust_backend"] }
+memmap2.workspace = true
+rayon.workspace = true
+roxmltree = "0.21.1"
+serde.workspace = true
+serde_json.workspace = true
+sha2.workspace = true
+tempfile.workspace = true
+thiserror.workspace = true
+tetra3-core = { path = "../tetra3-core" }
+tetra3-index = { path = "../tetra3-index", features = ["mmap"] }
+tetra3-lens = { path = "../tetra3-lens" }
+tetra3 = { package = "om-tetra3", path = "../tetra3" }

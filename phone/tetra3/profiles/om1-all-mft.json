@@ -1,0 +1,33 @@
+{
+  "source": {
+    "repository": "https://github.com/lensfun/lensfun.git",
+    "revision": "selected checkout",
+    "database_format": 2,
+    "database_license": "CC-BY-SA-3.0"
+  },
+  "compatible_lenses": [
+    {
+      "all_compatible_lenses": true,
+      "profile_id_prefix": "lensfun-v2.om1.active-1296x972",
+      "camera_maker": "OM Digital Solutions",
+      "camera_model": "OM-1",
+      "lens_mount": "Micro 4/3 System",
+      "calibration_width": 5184,
+      "calibration_height": 3888,
+      "crop_x": 0,
+      "crop_y": 0,
+      "crop_width": 5184,
+      "crop_height": 3888,
+      "encoded_width": 1296,
+      "encoded_height": 972,
+      "orientation": 1
+    }
+  ],
+  "audit_lenses": [
+    {
+      "lens_maker": "Olympus",
+      "lens_model": "Olympus M.Zuiko Digital ED 300mm f/4.0 IS PRO",
+      "do_not_substitute": true
+    }
+  ]
+}

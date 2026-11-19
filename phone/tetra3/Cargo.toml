@@ -1,0 +1,33 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/tetra3-core",
+    "crates/tetra3-index",
+    "crates/tetra3-lens",
+    "crates/tetra3-cli",
+    "crates/tetra3",
+    "crates/tetra3-android",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+license = "Apache-2.0"
+
+[workspace.dependencies]
+clap = { version = "4.5.47", features = ["derive"] }
+csv = "1.4.0"
+memmap2 = "0.9.8"
+jni = { version = "0.21.1", default-features = false }
+rayon = "1.11.0"
+serde = { version = "1.0.219", features = ["derive"] }
+serde_json = "1.0.143"
+sha2 = "0.10.9"
+tempfile = "3.21.0"
+thiserror = "2.0.16"
+
+[profile.release]
+codegen-units = 1
+lto = "thin"
+strip = "symbols"

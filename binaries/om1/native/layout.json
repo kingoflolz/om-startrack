@@ -1,0 +1,172 @@
+[
+  {
+    "offset": 157536,
+    "size": 70,
+    "file": "00026760.bin"
+  },
+  {
+    "offset": 157632,
+    "size": 51,
+    "file": "000267c0.bin"
+  },
+  {
+    "offset": 157685,
+    "size": 29,
+    "file": "000267f5.bin"
+  },
+  {
+    "offset": 157716,
+    "size": 204,
+    "file": "00026814.bin"
+  },
+  {
+    "offset": 158336,
+    "size": 422,
+    "file": "00026a80.bin"
+  },
+  {
+    "offset": 159008,
+    "size": 97,
+    "file": "00026d20.bin"
+  },
+  {
+    "offset": 1302143,
+    "size": 7,
+    "file": "0013de7f.bin"
+  },
+  {
+    "offset": 1302242,
+    "size": 8,
+    "file": "0013dee2.bin"
+  },
+  {
+    "offset": 1304221,
+    "size": 6,
+    "file": "0013e69d.bin"
+  },
+  {
+    "offset": 1321679,
+    "size": 2,
+    "file": "00142acf.bin"
+  },
+  {
+    "offset": 2102112,
+    "size": 4,
+    "file": "00201360.bin"
+  },
+  {
+    "offset": 2102120,
+    "size": 4,
+    "file": "00201368.bin"
+  },
+  {
+    "offset": 11518834,
+    "size": 7,
+    "file": "00afc372.bin"
+  },
+  {
+    "offset": 25040916,
+    "size": 5,
+    "file": "017e1814.bin"
+  },
+  {
+    "offset": 25041113,
+    "size": 5,
+    "file": "017e18d9.bin"
+  },
+  {
+    "offset": 26171656,
+    "size": 7,
+    "file": "018f5908.bin"
+  },
+  {
+    "offset": 238177312,
+    "size": 1212,
+    "file": "0e324c20.bin"
+  },
+  {
+    "offset": 238183456,
+    "size": 270,
+    "file": "0e326420.bin"
+  },
+  {
+    "offset": 238184352,
+    "size": 61,
+    "file": "0e3267a0.bin"
+  },
+  {
+    "offset": 238184480,
+    "size": 305,
+    "file": "0e326820.bin"
+  },
+  {
+    "offset": 238184992,
+    "size": 91,
+    "file": "0e326a20.bin"
+  },
+  {
+    "offset": 238186125,
+    "size": 2,
+    "file": "0e326e8d.bin"
+  },
+  {
+    "offset": 238186185,
+    "size": 2,
+    "file": "0e326ec9.bin"
+  },
+  {
+    "offset": 238186196,
+    "size": 2,
+    "file": "0e326ed4.bin"
+  },
+  {
+    "offset": 238186699,
+    "size": 2,
+    "file": "0e3270cb.bin"
+  },
+  {
+    "offset": 238225821,
+    "size": 5,
+    "file": "0e33099d.bin"
+  },
+  {
+    "offset": 238232133,
+    "size": 7,
+    "file": "0e332245.bin"
+  },
+  {
+    "offset": 238253185,
+    "size": 5,
+    "file": "0e337481.bin"
+  },
+  {
+    "offset": 238253191,
+    "size": 12,
+    "file": "0e337487.bin"
+  },
+  {
+    "offset": 238274259,
+    "size": 9,
+    "file": "0e33c6d3.bin"
+  },
+  {
+    "offset": 238275193,
+    "size": 12,
+    "file": "0e33ca79.bin"
+  },
+  {
+    "offset": 238275775,
+    "size": 5,
+    "file": "0e33ccbf.bin"
+  },
+  {
+    "offset": 238275888,
+    "size": 9,
+    "file": "0e33cd30.bin"
+  },
+  {
+    "offset": 238279272,
+    "size": 4,
+    "file": "0e33da68.bin"
+  }
+]

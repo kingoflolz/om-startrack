@@ -1,0 +1,24 @@
+{
+  "om1": {
+    "model": "OM-1",
+    "version": "1.9",
+    "size": 240779264,
+    "input_sha256": "342954a48b60bb900614791d6c44d2ba88a67e7a0e03a065069160daa5fbd75a",
+    "output_filename": "om1-1.9-startrack.BIN",
+    "rootfs_offset": 143724544,
+    "rootfs_size": 11812864,
+    "cpu0_offset": 238158880,
+    "cpu0_size": 140784
+  },
+  "om1ii": {
+    "model": "OM-1 Mark II",
+    "version": "1.3",
+    "size": 240517120,
+    "input_sha256": "f60b5bbd305e67caf5d1b5e80eb426f6d911de244abb3aaa68f420ef61e05449",
+    "output_filename": "om1ii-1.3-startrack.BIN",
+    "rootfs_offset": 143331328,
+    "rootfs_size": 12255232,
+    "cpu0_offset": 237896736,
+    "cpu0_size": 143628
+  }
+}

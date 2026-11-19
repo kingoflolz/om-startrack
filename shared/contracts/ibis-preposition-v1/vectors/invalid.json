@@ -1,0 +1,71 @@
+{
+  "schema": "olympus-ibis-preposition-v1-invalid-vectors/1",
+  "contract_schema": "../schema.json",
+  "vectors": [
+    {
+      "id": "length.short",
+      "hex": "00000000000000",
+      "expected_error": "value_length"
+    },
+    {
+      "id": "length.trailing",
+      "hex": "000000000000000000",
+      "expected_error": "value_length"
+    },
+    {
+      "id": "action.unknown",
+      "hex": "0000000000000300",
+      "expected_error": "action"
+    },
+    {
+      "id": "action.unsigned_unknown",
+      "hex": "000000000000ffff",
+      "expected_error": "action"
+    },
+    {
+      "id": "cancel.nonzero_x",
+      "hex": "0100000000000000",
+      "expected_error": "cancel_axes"
+    },
+    {
+      "id": "cancel.nonzero_y",
+      "hex": "0000ffff00000000",
+      "expected_error": "cancel_axes"
+    },
+    {
+      "id": "cancel.nonzero_roll",
+      "hex": "0000000001000000",
+      "expected_error": "cancel_axes"
+    },
+    {
+      "id": "native.x_positive_overflow",
+      "hex": "d06d000000000100",
+      "expected_error": "x_counts_native_overflow"
+    },
+    {
+      "id": "native.x_negative_overflow",
+      "hex": "3092000000000100",
+      "expected_error": "x_counts_native_overflow"
+    },
+    {
+      "id": "native.y_positive_overflow",
+      "hex": "0000d06d00000100",
+      "expected_error": "y_counts_native_overflow"
+    },
+    {
+      "id": "native.y_negative_overflow",
+      "hex": "0000309200000100",
+      "expected_error": "y_counts_native_overflow"
+    },
+    {
+      "id": "native.signed_minimum_overflow",
+      "hex": "0080008000800100",
+      "expected_error": "x_counts_native_overflow"
+    },
+    {
+      "id": "native.signed_maximum_overflow",
+      "hex": "ff7fff7fff7f0100",
+      "expected_error": "x_counts_native_overflow"
+    }
+  ]
+}

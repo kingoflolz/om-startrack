@@ -1,0 +1,33 @@
+{
+  "description": "Synthetic four-ray invariant and attitude convention golden",
+  "camera_frame": "+x right, +y down, +z forward (right handed)",
+  "tangent_points": [
+    [-0.08, -0.04],
+    [0.03, -0.06],
+    [0.07, 0.05],
+    [-0.02, 0.09]
+  ],
+  "sorted_edges_rad": [
+    0.098137271164026,
+    0.111499906473193,
+    0.116757797923295,
+    0.142712093260511,
+    0.157753660739103,
+    0.174479934103946
+  ],
+  "ratios": [
+    0.562455916022761,
+    0.639041429295630,
+    0.669176077598340,
+    0.817928399580266,
+    0.904136407141932
+  ],
+  "q8_floor_256": [143, 163, 171, 209, 231],
+  "camera_to_world_rotation": "Rz(30 deg) Ry(-20 deg) Rx(10 deg)",
+  "camera_to_world_quaternion_wxyz": [
+    0.943714364147489,
+    0.127679440695781,
+    -0.144878125417369,
+    0.268535822751569
+  ]
+}

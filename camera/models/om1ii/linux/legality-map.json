@@ -1,0 +1,65 @@
+{
+  "hex_replacements": {
+    "0x2a05c4000": "0x2a05a5000",
+    "0x2a05c4680": "0x2a05a5e88",
+    "0x2a05c9000": "0x2a05aa000",
+    "0x2a05c94cc": "0x2a05aacd4",
+    "0x2a06e2000": "0x2a06c7000",
+    "0x2a06e2bf8": "0x2a06c7acc",
+    "0x2a06ec000": "0x2a06d1000",
+    "0x2a06ecc10": "0x2a06d1dc4",
+    "0x2a05cb000": "0x2a05ac000",
+    "0x2a05e1000": "0x2a05c8000",
+    "0x2a05e1004": "0x2a05c8c6c",
+    "0x2a05cb184": "0x2a05acadc",
+    "0x2a05cd228": "0x2a05b869c",
+    "0x2a05cffd8": "0x2a05b86e4",
+    "0x2a05d4e5c": "0x2a05b856c",
+    "0xdacb497e": "0xb46d555",
+    "0x377ff08e": "0xcfda0444",
+    "0x45102785": "0x45102785",
+    "0xffc08b86": "0xcaae9d50",
+    "0xc0e0a7e2": "0x894a498d",
+    "0x962c4362": "0x962c4362",
+    "0xda655af8": "0x97bfb4ba",
+    "0x2875711e": "0xf47c63ec",
+    "0xc704f2a": "0x2f11ec07"
+  },
+  "text_replacements": [
+    {
+      "path": "camera/linux/star-worker/devmem_state.cpp",
+      "old": "kDirectShutterLegalitySemanticLength = 0xdcc",
+      "new": "kDirectShutterLegalitySemanticLength = 0xe20"
+    },
+    {
+      "path": "camera/linux/star-worker/devmem_state.cpp",
+      "old": "kDirectIsoLegalityMappingLength = 0xb000",
+      "new": "kDirectIsoLegalityMappingLength = 0xe000"
+    },
+    {
+      "path": "camera/linux/star-worker/devmem_state.cpp",
+      "old": "kDirectIsoRegistryMappingLength = 0x2000",
+      "new": "kDirectIsoRegistryMappingLength = 0x3000"
+    },
+    {
+      "path": "camera/linux/star-worker/devmem_state.cpp",
+      "old": "kDirectIsoRegistrySemanticLength = 0x19f0",
+      "new": "kDirectIsoRegistrySemanticLength = 0x1a54"
+    },
+    {
+      "path": "camera/linux/star-worker/devmem_state.cpp",
+      "old": "{UINT64_C(0x2a05cd228), 0x10,",
+      "new": "{UINT64_C(0x2a05cd228), 0x18,"
+    },
+    {
+      "path": "camera/linux/star-worker/devmem_state.cpp",
+      "old": "{UINT64_C(0x2a05cffd8), 0x08,",
+      "new": "{UINT64_C(0x2a05cffd8), 0x10,"
+    },
+    {
+      "path": "camera/linux/star-worker/devmem_state.cpp",
+      "old": "{UINT64_C(0x2a05d4e5c), 0x9bc,",
+      "new": "{UINT64_C(0x2a05d4e5c), 0xb74,"
+    }
+  ]
+}

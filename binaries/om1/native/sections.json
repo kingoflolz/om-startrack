@@ -1,0 +1,246 @@
+{
+  "main": [
+    {
+      "section": ".astro_patch_descriptor",
+      "vma": 1612850016,
+      "size": 4
+    },
+    {
+      "section": ".astro_patch_ptpip_remote",
+      "vma": 1636919560,
+      "size": 7
+    },
+    {
+      "section": ".astro_patch_sleep_api_state",
+      "vma": 1622266738,
+      "size": 7
+    },
+    {
+      "section": ".astro_text",
+      "vma": 1610905440,
+      "size": 70
+    },
+    {
+      "section": ".astro_ptpip_text",
+      "vma": 1610905536,
+      "size": 51
+    },
+    {
+      "section": ".astro_sleep_api_state_text",
+      "vma": 1610905589,
+      "size": 29
+    },
+    {
+      "section": ".astro_patch_ptpip_local_command",
+      "vma": 1635788820,
+      "size": 5
+    },
+    {
+      "section": ".astro_patch_ptpip_local_event",
+      "vma": 1635789017,
+      "size": 5
+    },
+    {
+      "section": ".astro_ptpip_local_text",
+      "vma": 1610906912,
+      "size": 97
+    }
+  ],
+  "rate_bridge": [
+    {
+      "section": ".astro_op37_bridge_text",
+      "vma": 1073777536,
+      "size": 61
+    },
+    {
+      "section": ".astro_op37_bridge_dispatch",
+      "vma": 1073872456,
+      "size": 4
+    }
+  ],
+  "rate_control": [
+    {
+      "section": ".astro_preposition_text",
+      "vma": 1073777664,
+      "size": 193
+    },
+    {
+      "section": ".astro_control_text",
+      "vma": 1073778176,
+      "size": 91
+    },
+    {
+      "section": ".astro_control_entry_redirect",
+      "vma": 1073846369,
+      "size": 5
+    },
+    {
+      "section": ".astro_preposition_native_pair_redirect",
+      "vma": 1073846375,
+      "size": 12
+    },
+    {
+      "section": ".astro_preposition_mode_redirect",
+      "vma": 1073867443,
+      "size": 9
+    },
+    {
+      "section": ".astro_control_ring_write_wrap",
+      "vma": 1073779309,
+      "size": 2
+    },
+    {
+      "section": ".astro_control_ring_count_capacity",
+      "vma": 1073779369,
+      "size": 2
+    },
+    {
+      "section": ".astro_control_ring_oldest_wrap",
+      "vma": 1073779380,
+      "size": 2
+    },
+    {
+      "section": ".astro_control_ring_dump_wrap",
+      "vma": 1073779883,
+      "size": 2
+    }
+  ],
+  "gyro": [
+    {
+      "section": ".gyro_text",
+      "vma": 1073770496,
+      "size": 1212
+    },
+    {
+      "section": ".gyro_release_redirect",
+      "vma": 1073868377,
+      "size": 7
+    },
+    {
+      "section": ".gyro_sample_redirect",
+      "vma": 1073868384,
+      "size": 5
+    },
+    {
+      "section": ".gyro_mode_redirect",
+      "vma": 1073867443,
+      "size": 9
+    },
+    {
+      "section": ".gyro_irq_redirect",
+      "vma": 1073869072,
+      "size": 9
+    },
+    {
+      "section": ".gyro_ring_write",
+      "vma": 1073779309,
+      "size": 2
+    },
+    {
+      "section": ".gyro_ring_count",
+      "vma": 1073779369,
+      "size": 2
+    },
+    {
+      "section": ".gyro_ring_oldest",
+      "vma": 1073779380,
+      "size": 2
+    },
+    {
+      "section": ".gyro_ring_dump",
+      "vma": 1073779883,
+      "size": 2
+    }
+  ],
+  "reply": [
+    {
+      "section": ".gyro_reply_text",
+      "vma": 1073776640,
+      "size": 270
+    },
+    {
+      "section": ".gyro_reply_send_redirect",
+      "vma": 1073819005,
+      "size": 5
+    },
+    {
+      "section": ".gyro_reply_copy_redirect",
+      "vma": 1073825317,
+      "size": 7
+    }
+  ],
+  "gyro_main": [
+    {
+      "section": ".gyro_main_patch_rx",
+      "vma": 1612069583,
+      "size": 2
+    },
+    {
+      "section": ".gyro_main_patch_parser",
+      "vma": 1612850024,
+      "size": 4
+    },
+    {
+      "section": ".gyro_main_patch_eligible",
+      "vma": 1612050047,
+      "size": 7
+    },
+    {
+      "section": ".gyro_main_patch_submit",
+      "vma": 1612050146,
+      "size": 8
+    },
+    {
+      "section": ".gyro_main_patch_wake",
+      "vma": 1622266738,
+      "size": 7
+    },
+    {
+      "section": ".gyro_main_patch_acquisition",
+      "vma": 1612052125,
+      "size": 6
+    },
+    {
+      "section": ".gyro_main_text",
+      "vma": 1610905620,
+      "size": 204
+    },
+    {
+      "section": ".gyro_main_acquisition_text",
+      "vma": 1610906368,
+      "size": 294
+    },
+    {
+      "section": ".gyro_main_mirror",
+      "vma": 1610906240,
+      "size": 64
+    },
+    {
+      "section": ".gyro_main_lease",
+      "vma": 1610906304,
+      "size": 16
+    },
+    {
+      "section": ".gyro_main_private",
+      "vma": 1610906320,
+      "size": 48
+    }
+  ],
+  "preposition": [
+    {
+      "section": ".pre_envelope_text",
+      "vma": 1073777857,
+      "size": 112
+    },
+    {
+      "section": ".pre_envelope_adopt_redirect",
+      "vma": 1073777673,
+      "size": 5
+    },
+    {
+      "section": ".pre_envelope_builder_redirect",
+      "vma": 1073868959,
+      "size": 5
+    }
+  ]
+}

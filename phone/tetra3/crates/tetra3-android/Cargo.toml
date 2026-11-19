@@ -1,0 +1,17 @@
+[package]
+name = "tetra3-android"
+description = "JNI bridge for the mmap-backed tetra3 Android plate solver"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+jni.workspace = true
+tetra3 = { package = "om-tetra3", path = "../tetra3", features = ["mmap"] }
+
+[lints.rust]
+unsafe_op_in_unsafe_fn = "deny"

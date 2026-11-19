@@ -1,0 +1,395 @@
+{
+  "vectors": [
+    {
+      "name": "cold_state_unavailable_attitude",
+      "hex": "070000000000000000000000000000000000000000000000ffffffffffffffff000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "expected": {
+        "version": 7,
+        "flags": 0,
+        "publication_generation": 0,
+        "config_generation": 0,
+        "catalog_generation": 0,
+        "worker_generation": 0,
+        "actual_native": [
+          0,
+          0,
+          0
+        ],
+        "actual_indices": [
+          255,
+          255,
+          255
+        ],
+        "recipe_indices": [
+          255,
+          255,
+          255
+        ],
+        "aperture_bounds": [
+          255,
+          255
+        ],
+        "focal_bits": 0,
+        "detector": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "ibis_flags": 0,
+        "ibis_sequence": 0,
+        "ibis_q10": [
+          0,
+          0,
+          0
+        ],
+        "lens_command_generation": 0,
+        "lens_movestep_raw": [
+          0,
+          0
+        ],
+        "acceleration_flags": 0,
+        "acceleration_main_generation": 0,
+        "acceleration_mg": [
+          0,
+          0,
+          0
+        ],
+        "lens": "",
+        "gyro_attitude": {
+          "flags": 0,
+          "tick": 0,
+          "capture_sequence": 0,
+          "capture_tick": 0,
+          "current_q30": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "capture_q30": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "name": "complete_state_capture_preparation",
+      "hex": "073f0a0000000300000007000000020000009cffc8002c010102030402050006000096430005030000040003e60001003f0900640038ff2c010c00000083fb7d040f0a0000000000e803f6ff0d4d2e5a55494b4f203330306d6d010700006eb200001300000028a000000000002000000020000000200000002000000000000000400000000000000000",
+      "expected": {
+        "version": 7,
+        "flags": 63,
+        "publication_generation": 10,
+        "config_generation": 3,
+        "catalog_generation": 7,
+        "worker_generation": 2,
+        "actual_native": [
+          -100,
+          200,
+          300
+        ],
+        "actual_indices": [
+          1,
+          2,
+          3
+        ],
+        "recipe_indices": [
+          4,
+          2,
+          5
+        ],
+        "aperture_bounds": [
+          0,
+          6
+        ],
+        "focal_bits": 1133903872,
+        "detector": [
+          1280,
+          3,
+          1024,
+          768,
+          230,
+          1
+        ],
+        "ibis_flags": 63,
+        "ibis_sequence": 9,
+        "ibis_q10": [
+          100,
+          -200,
+          300
+        ],
+        "lens_command_generation": 12,
+        "lens_movestep_raw": [
+          -1149,
+          1149
+        ],
+        "acceleration_flags": 15,
+        "acceleration_main_generation": 10,
+        "acceleration_mg": [
+          0,
+          1000,
+          -10
+        ],
+        "lens": "M.ZUIKO 300mm",
+        "gyro_attitude": {
+          "flags": 7,
+          "tick": 45678,
+          "capture_sequence": 19,
+          "capture_tick": 41000,
+          "current_q30": [
+            536870912,
+            536870912,
+            536870912,
+            536870912
+          ],
+          "capture_q30": [
+            0,
+            1073741824,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "name": "complete_state_retained_capture_after_pause",
+      "hex": "073f0a0000000300000007000000020000009cffc8002c010102030402050006000096430005030000040003e60001003f0900640038ff2c010c00000083fb7d040f0a0000000000e803f6ff0d4d2e5a55494b4f203330306d6d010700006fb200001300000028a000000000004000000000000000000000000000000000000000400000000000000000",
+      "expected": {
+        "version": 7,
+        "flags": 63,
+        "publication_generation": 10,
+        "config_generation": 3,
+        "catalog_generation": 7,
+        "worker_generation": 2,
+        "actual_native": [
+          -100,
+          200,
+          300
+        ],
+        "actual_indices": [
+          1,
+          2,
+          3
+        ],
+        "recipe_indices": [
+          4,
+          2,
+          5
+        ],
+        "aperture_bounds": [
+          0,
+          6
+        ],
+        "focal_bits": 1133903872,
+        "detector": [
+          1280,
+          3,
+          1024,
+          768,
+          230,
+          1
+        ],
+        "ibis_flags": 63,
+        "ibis_sequence": 9,
+        "ibis_q10": [
+          100,
+          -200,
+          300
+        ],
+        "lens_command_generation": 12,
+        "lens_movestep_raw": [
+          -1149,
+          1149
+        ],
+        "acceleration_flags": 15,
+        "acceleration_main_generation": 10,
+        "acceleration_mg": [
+          0,
+          1000,
+          -10
+        ],
+        "lens": "M.ZUIKO 300mm",
+        "gyro_attitude": {
+          "flags": 7,
+          "tick": 45679,
+          "capture_sequence": 19,
+          "capture_tick": 41000,
+          "current_q30": [
+            1073741824,
+            0,
+            0,
+            0
+          ],
+          "capture_q30": [
+            0,
+            1073741824,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "name": "capture_valid_live_unavailable",
+      "hex": "073f0a0000000300000007000000020000009cffc8002c010102030402050006000096430005030000040003e60001003f0900640038ff2c010c00000083fb7d040f0a0000000000e803f6ff0d4d2e5a55494b4f203330306d6d01020000401f000003000000581b00000000000000000000000000000000000000000040000000000000000000000000",
+      "expected": {
+        "version": 7,
+        "flags": 63,
+        "publication_generation": 10,
+        "config_generation": 3,
+        "catalog_generation": 7,
+        "worker_generation": 2,
+        "actual_native": [
+          -100,
+          200,
+          300
+        ],
+        "actual_indices": [
+          1,
+          2,
+          3
+        ],
+        "recipe_indices": [
+          4,
+          2,
+          5
+        ],
+        "aperture_bounds": [
+          0,
+          6
+        ],
+        "focal_bits": 1133903872,
+        "detector": [
+          1280,
+          3,
+          1024,
+          768,
+          230,
+          1
+        ],
+        "ibis_flags": 63,
+        "ibis_sequence": 9,
+        "ibis_q10": [
+          100,
+          -200,
+          300
+        ],
+        "lens_command_generation": 12,
+        "lens_movestep_raw": [
+          -1149,
+          1149
+        ],
+        "acceleration_flags": 15,
+        "acceleration_main_generation": 10,
+        "acceleration_mg": [
+          0,
+          1000,
+          -10
+        ],
+        "lens": "M.ZUIKO 300mm",
+        "gyro_attitude": {
+          "flags": 2,
+          "tick": 8000,
+          "capture_sequence": 3,
+          "capture_tick": 7000,
+          "current_q30": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "capture_q30": [
+            1073741824,
+            0,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "name": "maximum_lens_length",
+      "hex": "073f0a0000000300000007000000020000009cffc8002c010102030402050006000096430005030000040003e60001003f0900640038ff2c010c00000083fb7d040f0a0000000000e803f6ff204c4c4c4c4c4c4c4c4c4c4c4c4c4c4c4c4c4c4c4c4c4c4c4c4c4c4c4c4c4c4c4c010700000100000000000000ffffffff0000000000000000000000c00000000000000000000000000000000000000040",
+      "expected": {
+        "version": 7,
+        "flags": 63,
+        "publication_generation": 10,
+        "config_generation": 3,
+        "catalog_generation": 7,
+        "worker_generation": 2,
+        "actual_native": [
+          -100,
+          200,
+          300
+        ],
+        "actual_indices": [
+          1,
+          2,
+          3
+        ],
+        "recipe_indices": [
+          4,
+          2,
+          5
+        ],
+        "aperture_bounds": [
+          0,
+          6
+        ],
+        "focal_bits": 1133903872,
+        "detector": [
+          1280,
+          3,
+          1024,
+          768,
+          230,
+          1
+        ],
+        "ibis_flags": 63,
+        "ibis_sequence": 9,
+        "ibis_q10": [
+          100,
+          -200,
+          300
+        ],
+        "lens_command_generation": 12,
+        "lens_movestep_raw": [
+          -1149,
+          1149
+        ],
+        "acceleration_flags": 15,
+        "acceleration_main_generation": 10,
+        "acceleration_mg": [
+          0,
+          1000,
+          -10
+        ],
+        "lens": "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL",
+        "gyro_attitude": {
+          "flags": 7,
+          "tick": 1,
+          "capture_sequence": 0,
+          "capture_tick": 4294967295,
+          "current_q30": [
+            0,
+            0,
+            -1073741824,
+            0
+          ],
+          "capture_q30": [
+            0,
+            0,
+            0,
+            1073741824
+          ]
+        }
+      }
+    }
+  ],
+  "schema": ""
+}

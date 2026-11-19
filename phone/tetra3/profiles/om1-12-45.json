@@ -1,0 +1,22 @@
+{
+  "profiles": [
+    {
+      "profile_id": "om-system.om-1.om-12-45-f4.active-1296x972",
+      "camera_maker": "OM Digital Solutions",
+      "camera_model": "OM-1",
+      "lens_maker": "OM Digital Solutions",
+      "lens_model": "OM 12-45mm F4.0",
+      "calibration_width": 5184,
+      "calibration_height": 3888,
+      "crop_x": 0,
+      "crop_y": 0,
+      "crop_width": 5184,
+      "crop_height": 3888,
+      "encoded_width": 1296,
+      "encoded_height": 972,
+      "orientation": 1,
+      "calibration_crop_factor": 2.0,
+      "calibration_aspect_ratio": 1.3333334
+    }
+  ]
+}

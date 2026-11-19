@@ -1,0 +1,11 @@
+[
+  "camera/linux/star-worker/camera.cpp",
+  "camera/linux/star-worker/devmem_state.cpp",
+  "camera/linux/star-worker/devmem_state.h",
+  "camera/linux/star-worker/setting_catalog_direct.cpp",
+  "camera/linux/star-worker/setting_catalog_direct.h",
+  "camera/linux/star-worker/astro_preposition_mailbox.h",
+  "camera/linux/bluetooth/preload/services/star_gatt_server.c",
+  "camera/linux/bluetooth/preload/include/gyro_attitude_source.h",
+  "camera/linux/star-worker/orf.cpp"
+]

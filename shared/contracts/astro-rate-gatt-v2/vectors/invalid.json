@@ -1,0 +1,86 @@
+{
+  "schema": "olympus-astro-rate-gatt-v2-invalid-vectors/1",
+  "contract_schema": "../schema.json",
+  "vectors": [
+    {
+      "id": "length.short",
+      "hex": "0100000000000000000000000100000000",
+      "expected_error": "value_length"
+    },
+    {
+      "id": "length.trailing",
+      "hex": "01000000000000000000000001000000000000",
+      "expected_error": "value_length"
+    },
+    {
+      "id": "rate.above_max",
+      "hex": "0100650b0000000000000000010000000000",
+      "expected_error": "yaw_rate_q16"
+    },
+    {
+      "id": "rate.below_min",
+      "hex": "ffff9af40000000000000000010000000000",
+      "expected_error": "yaw_rate_q16"
+    },
+    {
+      "id": "active.requires_nonzero_body_or_gave",
+      "hex": "000000000000000000000000102700000000",
+      "expected_error": "active_lanes"
+    },
+    {
+      "id": "ttl.zero_active",
+      "hex": "010000000000000000000000000000000000",
+      "expected_error": "ttl_ticks"
+    },
+    {
+      "id": "cancel.must_be_exact_zero",
+      "hex": "000000000000000000000000010000000000",
+      "expected_error": "active_lanes"
+    },
+    {
+      "id": "gave0.above_admission_bound",
+      "hex": "000000000000000000000000010041000000",
+      "expected_error": "gave0_offset"
+    },
+    {
+      "id": "gave0.below_admission_bound",
+      "hex": "0000000000000000000000000100bfff0000",
+      "expected_error": "gave0_offset"
+    },
+    {
+      "id": "gave1.above_admission_bound",
+      "hex": "000000000000000000000000010000004100",
+      "expected_error": "gave1_offset"
+    },
+    {
+      "id": "gave1.below_admission_bound",
+      "hex": "00000000000000000000000001000000bfff",
+      "expected_error": "gave1_offset"
+    },
+    {
+      "id": "unsupported.gave_only",
+      "hex": "000000000000000000000000010040000000",
+      "expected_error": "gave0_offset"
+    },
+    {
+      "id": "unsupported.gave0_offset.-1",
+      "hex": "0100000000000000000000000100ffff0000",
+      "expected_error": "gave0_offset"
+    },
+    {
+      "id": "unsupported.gave0_offset.+1",
+      "hex": "010000000000000000000000010001000000",
+      "expected_error": "gave0_offset"
+    },
+    {
+      "id": "unsupported.gave1_offset.-1",
+      "hex": "01000000000000000000000001000000ffff",
+      "expected_error": "gave1_offset"
+    },
+    {
+      "id": "unsupported.gave1_offset.+1",
+      "hex": "010000000000000000000000010000000100",
+      "expected_error": "gave1_offset"
+    }
+  ]
+}

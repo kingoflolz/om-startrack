@@ -1,0 +1,1782 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:fillViewport="true"
+    android:overScrollMode="never">
+
+    <LinearLayout
+        android:id="@+id/root_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingTop="8dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="12dp">
+
+        <!-- Opened explicitly from the status button; never forced over the shutter UI. -->
+        <LinearLayout
+            android:id="@+id/connection_screen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/connection_back_button"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:backgroundTint="@color/panel_stroke"
+                android:text="@string/back_to_controls"
+                android:textAllCaps="false"
+                android:textColor="@color/text_primary" />
+
+            <TextView
+                android:id="@+id/connection_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_status_idle"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="@string/status_disconnected"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/connection_status_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp" />
+
+            <LinearLayout
+                android:id="@+id/connection_panel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_panel"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/connection"
+                    android:textColor="@color/text_primary"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/discovered_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/found_cameras"
+                    android:textColor="@color/text_secondary"
+                    android:visibility="gone" />
+
+                <Spinner
+                    android:id="@+id/camera_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/camera_name"
+                    android:textColor="@color/text_secondary" />
+
+                <EditText
+                    android:id="@+id/camera_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:hint="@string/camera_name_hint"
+                    android:importantForAutofill="no"
+                    android:inputType="textNoSuggestions"
+                    android:maxLines="1"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/disabled" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/passcode"
+                    android:textColor="@color/text_secondary" />
+
+                <EditText
+                    android:id="@+id/passcode"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:hint="@string/passcode_hint"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:maxLength="6"
+                    android:maxLines="1"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/disabled" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/scan_button"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/panel_stroke"
+                        android:text="@string/scan"
+                        android:textColor="@color/text_primary" />
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="1dp" />
+
+                    <Button
+                        android:id="@+id/connect_button"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/accent"
+                        android:text="@string/connect"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/controls_screen"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:id="@+id/shutter_page"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/controls_camera_name"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    tools:ignore="ButtonStyle">
+
+                    <Button
+                        android:id="@+id/controls_status"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_status_not_connected"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:minHeight="44dp"
+                        android:minWidth="0dp"
+                        android:paddingLeft="12dp"
+                        android:paddingRight="12dp"
+                        android:singleLine="true"
+                        android:text="@string/not_connected"
+                        android:textAllCaps="false"
+                        android:textColor="@color/text_primary"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/controls_disconnect_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="44dp"
+                        android:layout_marginStart="8dp"
+                        android:backgroundTint="@color/panel_stroke"
+                        android:text="@string/disconnect"
+                        android:textAllCaps="false"
+                        android:textColor="@color/text_primary"
+                        android:visibility="gone" />
+
+                    <ImageButton
+                        android:id="@+id/controls_refresh_button"
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:layout_marginStart="8dp"
+                        android:backgroundTint="@color/panel_stroke"
+                        android:contentDescription="@string/refresh_connection"
+                        android:padding="12dp"
+                        android:src="@drawable/ic_refresh"
+                        android:tooltipText="@string/refresh" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/controls_status_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="2dp"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp" />
+
+                <LinearLayout
+                    android:id="@+id/camera_exposure_settings_panel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:gravity="center"
+                                android:labelFor="@id/camera_aperture"
+                                android:text="@string/aperture_label"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                            <dev.omshutter.ExposureWheelPicker
+                                android:id="@+id/camera_aperture"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/exposure_picker_height"
+                                android:background="@drawable/bg_picker_wheel"
+                                android:importantForAutofill="no"
+                                android:importantForAccessibility="yes" />
+                        </LinearLayout>
+
+                        <Space
+                            android:layout_width="8dp"
+                            android:layout_height="1dp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:gravity="center"
+                                android:labelFor="@id/camera_shutter_speed"
+                                android:text="@string/shutter_speed_label"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                            <dev.omshutter.ExposureWheelPicker
+                                android:id="@+id/camera_shutter_speed"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/exposure_picker_height"
+                                android:background="@drawable/bg_picker_wheel"
+                                android:importantForAutofill="no"
+                                android:importantForAccessibility="yes" />
+                        </LinearLayout>
+
+                        <Space
+                            android:layout_width="8dp"
+                            android:layout_height="1dp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:gravity="center"
+                                android:labelFor="@id/camera_iso"
+                                android:text="@string/iso_label"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                            <dev.omshutter.ExposureWheelPicker
+                                android:id="@+id/camera_iso"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/exposure_picker_height"
+                                android:background="@drawable/bg_picker_wheel"
+                                android:importantForAutofill="no"
+                                android:importantForAccessibility="yes" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/remote_panel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/shutter_action_bar"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/shutter_action_bar_height"
+                        android:baselineAligned="false"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/half_press_button"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_shutter_action_left"
+                            android:contentDescription="@string/half_press_accessibility"
+                            android:includeFontPadding="false"
+                            android:maxLines="2"
+                            android:minHeight="0dp"
+                            android:minWidth="0dp"
+                            android:padding="4dp"
+                            android:stateListAnimator="@null"
+                            android:text="@string/half_press"
+                            android:textAllCaps="false"
+                            android:textColor="@color/shutter_action_text"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="32dp"
+                            android:background="@color/panel_stroke"
+                            android:importantForAccessibility="no" />
+
+                        <Button
+                            android:id="@+id/shutter_button"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_shutter_action_center"
+                            android:contentDescription="@string/shutter_accessibility"
+                            android:includeFontPadding="false"
+                            android:maxLines="2"
+                            android:minHeight="0dp"
+                            android:minWidth="0dp"
+                            android:padding="4dp"
+                            android:stateListAnimator="@null"
+                            android:text="@string/shutter"
+                            android:textAllCaps="false"
+                            android:textColor="@color/shutter_action_primary_text"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="32dp"
+                            android:background="@color/panel_stroke"
+                            android:importantForAccessibility="no" />
+
+                        <Button
+                            android:id="@+id/shutter_lock_target"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_shutter_action_right"
+                            android:clickable="true"
+                            android:contentDescription="@string/shutter_lock_accessibility"
+                            android:focusable="true"
+                            android:importantForAccessibility="yes"
+                            android:includeFontPadding="false"
+                            android:minHeight="0dp"
+                            android:minWidth="0dp"
+                            android:padding="4dp"
+                            android:stateListAnimator="@null"
+                            android:text="@string/shutter_lock_target"
+                            android:textAllCaps="false"
+                            android:textColor="@color/shutter_action_text"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/shutter_astro_panel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:labelFor="@id/shutter_correction_enabled"
+                            android:text="@string/astro_correction_heading"
+                            android:textColor="@color/text_primary"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <ImageButton
+                            android:id="@+id/astro_settings_button"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:background="?android:attr/selectableItemBackgroundBorderless"
+                            android:contentDescription="@string/astro_settings"
+                            android:padding="12dp"
+                            android:src="@drawable/ic_settings"
+                            android:tooltipText="@string/astro_settings" />
+
+                        <Switch
+                            android:id="@+id/shutter_correction_enabled"
+                            android:layout_width="wrap_content"
+                            android:layout_height="48dp"
+                            android:contentDescription="@string/correction_enabled" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/shutter_solve_button"
+                            android:layout_width="0dp"
+                            android:layout_height="48dp"
+                            android:layout_weight="1"
+                            android:backgroundTint="@color/star_action_tint"
+                            android:text="@string/solve"
+                            android:textAllCaps="false"
+                            android:textColor="@color/star_action_text"
+                            android:textStyle="bold" />
+
+                        <Space
+                            android:layout_width="8dp"
+                            android:layout_height="1dp" />
+
+                        <Button
+                            android:id="@+id/shutter_solve_capture_button"
+                            android:layout_width="0dp"
+                            android:layout_height="48dp"
+                            android:layout_weight="1"
+                            android:backgroundTint="@color/star_action_tint"
+                            android:text="@string/solve_and_capture"
+                            android:textAllCaps="false"
+                            android:textColor="@color/star_action_text"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/shutter_correction_status"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:accessibilityLiveRegion="polite"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="@string/correction_idle"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp" />
+
+                    <LinearLayout
+                        android:id="@+id/shutter_last_solve_coordinates"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:contentDescription="@string/camera_pointing_unavailable"
+                        android:importantForAccessibility="yes"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/shutter_last_solve_altaz"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:autoSizeMaxTextSize="12sp"
+                            android:autoSizeMinTextSize="9sp"
+                            android:autoSizeStepGranularity="0.5sp"
+                            android:autoSizeTextType="uniform"
+                            android:gravity="start"
+                            android:importantForAccessibility="no"
+                            android:maxLines="1"
+                            android:scrollHorizontally="false"
+                            android:singleLine="false"
+                            android:text="@string/last_solve_altaz_unavailable"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/shutter_last_solve_radec"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:gravity="start"
+                            android:importantForAccessibility="no"
+                            android:singleLine="false"
+                            android:text="@string/camera_radec_unavailable"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/shutter_last_solve_latency"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:gravity="start"
+                            android:importantForAccessibility="no"
+                            android:singleLine="false"
+                            android:text="@string/last_solve_age_unavailable"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/shutter_location_row"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/shutter_location_status"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:singleLine="false"
+                            android:text="@string/location_unavailable"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="12sp" />
+
+                        <Button
+                            android:id="@+id/shutter_location_refresh_button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="48dp"
+                            android:layout_marginStart="8dp"
+                            android:backgroundTint="@color/panel_stroke"
+                            android:contentDescription="@string/location_refresh_accessibility"
+                            android:text="@string/location_refresh"
+                            android:textAllCaps="false"
+                            android:textColor="@color/text_primary"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/shutter_correction_diagnostics"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:contentDescription="@string/shutter_correction_diagnostics_unavailable"
+                        android:importantForAccessibility="yes"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/shutter_correction_stars_used"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:ellipsize="end"
+                                android:gravity="start"
+                                android:importantForAccessibility="no"
+                                android:maxLines="1"
+                                android:singleLine="true"
+                                android:text="@string/shutter_correction_stars_unavailable"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/shutter_correction_rms_error"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:ellipsize="end"
+                                android:gravity="end"
+                                android:importantForAccessibility="no"
+                                android:maxLines="1"
+                                android:singleLine="true"
+                                android:text="@string/shutter_correction_rms_unavailable"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/shutter_correction_max_exposure"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:ellipsize="end"
+                                android:gravity="start"
+                                android:importantForAccessibility="no"
+                                android:maxLines="1"
+                                android:singleLine="true"
+                                android:text="@string/shutter_correction_max_exposure_unavailable"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/shutter_correction_remaining_exposure"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:ellipsize="end"
+                                android:gravity="end"
+                                android:importantForAccessibility="no"
+                                android:maxLines="1"
+                                android:singleLine="true"
+                                android:text="@string/shutter_correction_remaining_exposure_unavailable"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/star_tracker_panel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:id="@+id/star_tracker_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginBottom="12dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/star_tracker_back_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:backgroundTint="@color/panel_stroke"
+                        android:text="@string/back_to_shutter"
+                        android:textAllCaps="false"
+                        android:textColor="@color/text_primary" />
+
+                    <TextView
+                        android:id="@+id/star_tracker_page_heading"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_weight="1"
+                        android:text="@string/star_tracker_heading"
+                        android:textColor="@color/text_primary"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/detect_stars_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:backgroundTint="@color/star_action_tint"
+                    android:text="@string/solve"
+                    android:textAllCaps="false"
+                    android:textColor="@color/star_action_text"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/star_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:accessibilityLiveRegion="polite"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="@string/star_not_connected"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="14sp" />
+
+                <LinearLayout
+                    android:id="@+id/star_tracker_last_solve_coordinates"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:contentDescription="@string/camera_pointing_unavailable"
+                    android:importantForAccessibility="yes"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/star_tracker_last_solve_altaz"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autoSizeMaxTextSize="12sp"
+                        android:autoSizeMinTextSize="9sp"
+                        android:autoSizeStepGranularity="0.5sp"
+                        android:autoSizeTextType="uniform"
+                        android:gravity="start"
+                        android:importantForAccessibility="no"
+                        android:maxLines="1"
+                        android:scrollHorizontally="false"
+                        android:singleLine="false"
+                        android:text="@string/last_solve_altaz_unavailable"
+                        android:textColor="@color/text_primary"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/star_tracker_last_solve_radec"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:gravity="start"
+                        android:importantForAccessibility="no"
+                        android:singleLine="false"
+                        android:text="@string/camera_radec_unavailable"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/star_tracker_last_solve_latency"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:gravity="start"
+                        android:importantForAccessibility="no"
+                        android:singleLine="false"
+                        android:text="@string/last_solve_age_unavailable"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/plate_solve_quality"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:ellipsize="end"
+                        android:importantForAccessibility="no"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/plate_solve_focal_comparison"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:importantForAccessibility="no"
+                        android:singleLine="false"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/star_tracker_location_row"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/star_tracker_location_status"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:singleLine="false"
+                        android:text="@string/location_unavailable"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp" />
+
+                    <Button
+                        android:id="@+id/star_tracker_location_refresh_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="8dp"
+                        android:backgroundTint="@color/panel_stroke"
+                        android:contentDescription="@string/location_refresh_accessibility"
+                        android:text="@string/location_refresh"
+                        android:textAllCaps="false"
+                        android:textColor="@color/text_primary"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/capture_settings_toggle"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="12dp"
+                    android:backgroundTint="@color/panel_stroke"
+                    android:gravity="start|center_vertical"
+                    android:text="@string/capture_settings_collapsed"
+                    android:textAllCaps="false"
+                    android:textColor="@color/text_primary"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/capture_settings_panel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
+                            android:gravity="center"
+                            android:labelFor="@id/star_aperture"
+                            android:text="@string/aperture_label"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <dev.omshutter.ExposureWheelPicker
+                            android:id="@+id/star_aperture"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/exposure_picker_height"
+                            android:background="@drawable/bg_picker_wheel"
+                            android:importantForAutofill="no"
+                            android:importantForAccessibility="yes" />
+                    </LinearLayout>
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="1dp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
+                            android:gravity="center"
+                            android:labelFor="@id/star_shutter_speed"
+                            android:text="@string/shutter_speed_label"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <dev.omshutter.ExposureWheelPicker
+                            android:id="@+id/star_shutter_speed"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/exposure_picker_height"
+                            android:background="@drawable/bg_picker_wheel"
+                            android:importantForAutofill="no"
+                            android:importantForAccessibility="yes" />
+                    </LinearLayout>
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="1dp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
+                            android:gravity="center"
+                            android:labelFor="@id/star_iso"
+                            android:text="@string/iso_label"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <dev.omshutter.ExposureWheelPicker
+                            android:id="@+id/star_iso"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/exposure_picker_height"
+                            android:background="@drawable/bg_picker_wheel"
+                            android:importantForAutofill="no"
+                            android:importantForAccessibility="yes" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/detector_settings_toggle"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:backgroundTint="@color/panel_stroke"
+                    android:gravity="start|center_vertical"
+                    android:text="@string/detector_settings_collapsed"
+                    android:textAllCaps="false"
+                    android:textColor="@color/text_primary"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/detector_settings_panel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:labelFor="@id/detector_sigma"
+                                android:text="@string/detector_sigma"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="12sp" />
+
+                            <EditText
+                                android:id="@+id/detector_sigma"
+                                android:layout_width="match_parent"
+                                android:layout_height="48dp"
+                                android:inputType="numberDecimal"
+                                android:maxLines="1"
+                                android:textColor="@color/text_primary" />
+                        </LinearLayout>
+
+                        <Space android:layout_width="1dp" android:layout_height="6dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:labelFor="@id/detector_min_area"
+                                android:text="@string/detector_min_area"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="12sp" />
+
+                            <EditText
+                                android:id="@+id/detector_min_area"
+                                android:layout_width="match_parent"
+                                android:layout_height="48dp"
+                                android:inputType="number"
+                                android:maxLines="1"
+                                android:textColor="@color/text_primary" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:labelFor="@id/detector_max_area"
+                                android:text="@string/detector_max_area"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="12sp" />
+
+                            <EditText
+                                android:id="@+id/detector_max_area"
+                                android:layout_width="match_parent"
+                                android:layout_height="48dp"
+                                android:inputType="number"
+                                android:maxLines="1"
+                                android:textColor="@color/text_primary" />
+                        </LinearLayout>
+
+                        <Space android:layout_width="1dp" android:layout_height="6dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:labelFor="@id/detector_elongation"
+                                android:text="@string/detector_elongation"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="12sp" />
+
+                            <EditText
+                                android:id="@+id/detector_elongation"
+                                android:layout_width="match_parent"
+                                android:layout_height="48dp"
+                                android:inputType="numberDecimal"
+                                android:maxLines="1"
+                                android:textColor="@color/text_primary" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:labelFor="@id/detector_sharpness"
+                                android:text="@string/detector_sharpness"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="12sp" />
+
+                            <EditText
+                                android:id="@+id/detector_sharpness"
+                                android:layout_width="match_parent"
+                                android:layout_height="48dp"
+                                android:inputType="numberDecimal"
+                                android:maxLines="1"
+                                android:textColor="@color/text_primary" />
+                        </LinearLayout>
+
+                        <Space android:layout_width="1dp" android:layout_height="6dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:labelFor="@id/detector_border"
+                                android:text="@string/detector_border"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="12sp" />
+
+                            <EditText
+                                android:id="@+id/detector_border"
+                                android:layout_width="match_parent"
+                                android:layout_height="48dp"
+                                android:inputType="number"
+                                android:maxLines="1"
+                                android:textColor="@color/text_primary" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/detector_apply_button"
+                            android:layout_width="0dp"
+                            android:layout_height="44dp"
+                            android:layout_weight="1"
+                            android:backgroundTint="@color/panel_stroke"
+                            android:text="@string/apply_settings"
+                            android:textAllCaps="false"
+                            android:textColor="@color/text_primary" />
+
+                        <Space android:layout_width="8dp" android:layout_height="1dp" />
+
+                        <Button
+                            android:id="@+id/detector_restore_button"
+                            android:layout_width="0dp"
+                            android:layout_height="44dp"
+                            android:layout_weight="1"
+                            android:backgroundTint="@color/panel_stroke"
+                            android:text="@string/restore_defaults"
+                            android:textAllCaps="false"
+                            android:textColor="@color/text_primary" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/detector_status"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/solve_details_toggle"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:backgroundTint="@color/panel_stroke"
+                    android:gravity="start|center_vertical"
+                    android:text="@string/solve_details_collapsed"
+                    android:textAllCaps="false"
+                    android:textColor="@color/text_primary"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/solve_details_panel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/tracking_model_status"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp"
+                        android:visibility="gone" />
+
+                    <dev.omshutter.StarFieldView
+                        android:id="@+id/star_visualization"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:contentDescription="@string/star_visualization_empty_description" />
+
+                    <LinearLayout
+                        android:id="@+id/star_match_legend"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="6dp"
+                        android:contentDescription="@string/star_match_legend_description"
+                        android:gravity="center"
+                        android:importantForAccessibility="yes"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:importantForAccessibility="no"
+                            android:text="@string/star_pattern_match_legend"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:importantForAccessibility="no"
+                            android:text="@string/star_validation_match_legend"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/star_result_summary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:accessibilityLiveRegion="polite"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="@string/star_no_results"
+                        android:textColor="@color/text_primary"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/star_capture_details"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:accessibilityLiveRegion="polite"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="@string/star_metadata_unavailable"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp" />
+
+                    <LinearLayout
+                        android:id="@+id/plate_solve_result"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/plate_solve_coordinates"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:singleLine="false"
+                            android:text="@string/last_solve_radec_unavailable"
+                            android:textColor="@color/text_primary"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/plate_solve_orientation"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:textColor="@color/text_primary"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/plate_solve_lens_source"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/plate_solve_duration"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:singleLine="false"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/solver_settings_toggle"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:backgroundTint="@color/panel_stroke"
+                    android:gravity="start|center_vertical"
+                    android:text="@string/solver_settings_collapsed"
+                    android:textAllCaps="false"
+                    android:textColor="@color/text_primary"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/solver_settings_panel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:labelFor="@id/solver_max_observations"
+                                android:text="@string/solver_max_observations"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="12sp" />
+
+                            <EditText
+                                android:id="@+id/solver_max_observations"
+                                android:layout_width="match_parent"
+                                android:layout_height="48dp"
+                                android:inputType="number"
+                                android:maxLines="1"
+                                android:textColor="@color/text_primary" />
+                        </LinearLayout>
+
+                        <Space android:layout_width="1dp" android:layout_height="6dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:labelFor="@id/solver_seed_tolerance"
+                                android:text="@string/solver_seed_tolerance"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="12sp" />
+
+                            <EditText
+                                android:id="@+id/solver_seed_tolerance"
+                                android:layout_width="match_parent"
+                                android:layout_height="48dp"
+                                android:inputType="number"
+                                android:maxLines="1"
+                                android:textColor="@color/text_primary" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:labelFor="@id/solver_match_tolerance"
+                                android:text="@string/solver_match_tolerance"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="12sp" />
+
+                            <EditText
+                                android:id="@+id/solver_match_tolerance"
+                                android:layout_width="match_parent"
+                                android:layout_height="48dp"
+                                android:inputType="number"
+                                android:maxLines="1"
+                                android:textColor="@color/text_primary" />
+                        </LinearLayout>
+
+                        <Space android:layout_width="1dp" android:layout_height="6dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:labelFor="@id/solver_independent_matches"
+                                android:text="@string/solver_independent_matches"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="12sp" />
+
+                            <EditText
+                                android:id="@+id/solver_independent_matches"
+                                android:layout_width="match_parent"
+                                android:layout_height="48dp"
+                                android:inputType="number"
+                                android:maxLines="1"
+                                android:textColor="@color/text_primary" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:labelFor="@id/solver_timeout"
+                        android:text="@string/solver_timeout"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp" />
+
+                    <EditText
+                        android:id="@+id/solver_timeout"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:textColor="@color/text_primary" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/solver_settings_apply_button"
+                            android:layout_width="0dp"
+                            android:layout_height="44dp"
+                            android:layout_weight="1"
+                            android:backgroundTint="@color/panel_stroke"
+                            android:text="@string/apply_settings"
+                            android:textAllCaps="false"
+                            android:textColor="@color/text_primary" />
+
+                        <Space android:layout_width="8dp" android:layout_height="1dp" />
+
+                        <Button
+                            android:id="@+id/solver_settings_restore_button"
+                            android:layout_width="0dp"
+                            android:layout_height="44dp"
+                            android:layout_weight="1"
+                            android:backgroundTint="@color/panel_stroke"
+                            android:text="@string/restore_defaults"
+                            android:textAllCaps="false"
+                            android:textColor="@color/text_primary" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/solver_settings_status"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <Switch
+                    android:id="@+id/manual_override_toggle"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/manual_override"
+                    android:textColor="@color/text_primary" />
+
+                <LinearLayout
+                    android:id="@+id/manual_attitude_fields"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:labelFor="@id/manual_ra"
+                                android:text="@string/manual_ra"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="12sp" />
+
+                            <EditText
+                                android:id="@+id/manual_ra"
+                                android:layout_width="match_parent"
+                                android:layout_height="48dp"
+                                android:inputType="numberDecimal|numberSigned"
+                                android:maxLines="1"
+                                android:textColor="@color/text_primary" />
+                        </LinearLayout>
+
+                        <Space
+                            android:layout_width="8dp"
+                            android:layout_height="1dp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:labelFor="@id/manual_dec"
+                                android:text="@string/manual_dec"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="12sp" />
+
+                            <EditText
+                                android:id="@+id/manual_dec"
+                                android:layout_width="match_parent"
+                                android:layout_height="48dp"
+                                android:inputType="numberDecimal|numberSigned"
+                                android:maxLines="1"
+                                android:textColor="@color/text_primary" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/manual_attitude_status"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:accessibilityLiveRegion="polite"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:text="@string/correction_heading"
+                    android:textColor="@color/text_primary"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/correction_strength_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="@string/correction_strength_default"
+                    android:textColor="@color/text_primary"
+                    android:textStyle="bold" />
+
+                <SeekBar
+                    android:id="@+id/correction_strength"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:max="100"
+                    android:progress="100" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="0"
+                        android:textColor="@color/text_secondary" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="0.5"
+                        android:textColor="@color/text_secondary" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:text="1"
+                        android:textColor="@color/text_secondary" />
+                </LinearLayout>
+
+                <Switch
+                    android:id="@+id/preposition_enabled"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/preposition_enabled"
+                    android:textColor="@color/text_primary" />
+
+                <TextView
+                    android:id="@+id/correction_acknowledged_rates"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="@string/correction_rates_unavailable"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/apply_correction_button"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/star_action_tint"
+                        android:text="@string/apply_correction"
+                        android:textAllCaps="false"
+                        android:textColor="@color/star_action_text"
+                        android:textStyle="bold" />
+
+                    <Space android:layout_width="8dp" android:layout_height="1dp" />
+
+                    <Button
+                        android:id="@+id/stop_correction_button"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/panel_stroke"
+                        android:text="@string/stop_correction"
+                        android:textAllCaps="false"
+                        android:textColor="@color/text_primary"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <Button
+                    android:id="@+id/zero_camera_altaz_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:backgroundTint="@color/panel_stroke"
+                    android:enabled="false"
+                    android:text="@string/zero_camera_altaz_test"
+                    android:textAllCaps="false"
+                    android:textColor="@color/text_primary" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:id="@+id/controls_footer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/shutter_ibis_panel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/ibis_state_heading"
+                            android:textColor="@color/text_primary"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/shutter_ibis_status"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:gravity="end"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:text="@string/ibis_unavailable"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <dev.omshutter.IbisCorrectionView
+                        android:id="@+id/shutter_ibis_visualization"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/compact_ibis_visualization_height"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/bg_ibis_visualization" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/night_mode_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_marginTop="8dp"
+                    android:backgroundTint="@color/panel_stroke"
+                    android:gravity="center"
+                    android:text="@string/night_mode"
+                    android:textAllCaps="false"
+                    android:textColor="@color/text_primary" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

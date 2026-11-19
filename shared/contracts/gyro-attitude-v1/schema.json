@@ -1,0 +1,94 @@
+{
+  "schema": "olympus-gyro-attitude-v1-contract/1",
+  "byte_order": "little-endian",
+  "container": {
+    "contract": "../star-gatt/schema.json",
+    "location": "48-byte trailer after the existing length-delimited STATE lens name",
+    "separate_characteristic": false
+  },
+  "constants": {
+    "version": 1,
+    "value_size": 48,
+    "nominal_tick_hz": 2000,
+    "quaternion_fraction_bits": 30,
+    "quaternion_norm_min": 0.98,
+    "quaternion_norm_max": 1.02,
+    "known_flags": 7
+  },
+  "flags": {
+    "current_valid": 1,
+    "capture_valid": 2,
+    "capture_timing_is_preparation": 4
+  },
+  "layout": [
+    {
+      "name": "version",
+      "offset": 0,
+      "type": "u8",
+      "value": 1
+    },
+    {
+      "name": "flags",
+      "offset": 1,
+      "type": "u8"
+    },
+    {
+      "name": "reserved",
+      "offset": 2,
+      "type": "u16le",
+      "value": 0
+    },
+    {
+      "name": "tick",
+      "offset": 4,
+      "type": "u32le"
+    },
+    {
+      "name": "capture_sequence",
+      "offset": 8,
+      "type": "u32le"
+    },
+    {
+      "name": "capture_tick",
+      "offset": 12,
+      "type": "u32le"
+    },
+    {
+      "name": "current_q30",
+      "offset": 16,
+      "type": "i32le",
+      "count": 4
+    },
+    {
+      "name": "capture_q30",
+      "offset": 32,
+      "type": "i32le",
+      "count": 4
+    }
+  ],
+  "semantics": {
+    "quaternion_order": [
+      "w",
+      "x",
+      "y",
+      "z"
+    ],
+    "quaternion_convention": "Hamilton, body to arbitrary reference initialized once at boot",
+    "body_axes": [
+      "right",
+      "down",
+      "lens_forward"
+    ],
+    "quaternion_sign_equivalence": true,
+    "invalid_quaternion_lanes": "ignored; zero or retained values allowed",
+    "capture_preparation_requires_capture_valid": true,
+    "counters": "unsigned modulo 2^32",
+    "capture_reference": "same fixed reference as current quaternion",
+    "capture_retention": "until next capture latch or boot; reads, solves, and acquisition pauses retain it",
+    "capture_sequence_scope": "boot; increments only when a new capture is latched",
+    "capture_timestamp": "CPU0 gyro tick; preparation flag excludes an exact exposure-start claim",
+    "capture_to_solve_association": "consumer checks exactly one new latch against pre-capture baseline",
+    "absolute_attitude": "not present; app supplies horizon alignment from a plate solve",
+    "continuity": "acquisition pauses retain orientation; unobserved motion during a pause contributes error; connection replacement invalidates app alignment"
+  }
+}

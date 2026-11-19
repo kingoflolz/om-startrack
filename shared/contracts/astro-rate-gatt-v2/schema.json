@@ -1,0 +1,282 @@
+{
+  "schema": "olympus-astro-rate-gatt-v2-contract/1",
+  "byte_order": "little-endian",
+  "uuids": {
+    "service": "7e6d7a50-2c56-4f17-9c51-9a5f64b02440",
+    "rate": "7e6d7a50-2c56-4f17-9c51-9a5f64b02441"
+  },
+  "gatt": {
+    "service_handle_budget": 4,
+    "rate": {
+      "properties": [
+        "write"
+      ],
+      "property_bits": 8,
+      "permissions": [
+        "write"
+      ],
+      "permission_bits": 16,
+      "write_procedure": "att_write_request",
+      "readable": false,
+      "cccd": false
+    }
+  },
+  "runtime_service_set": {
+    "stock_olympus_service_is_discovery_anchor": true,
+    "required_star_contract": "../star-gatt/schema.json",
+    "required_star_service_uuid": "7e6d7a50-2c56-4f17-9c51-9a5f64b02450",
+    "required_rate_service_uuid": "7e6d7a50-2c56-4f17-9c51-9a5f64b02440",
+    "legacy_extension_services_registered": false,
+    "legacy_runtime_ingress_supported": false
+  },
+  "constants": {
+    "value_size": 18,
+    "legacy_rate_unit_rad_per_second": 1e-07,
+    "rate_fraction_bits": 16,
+    "rate_scale": 65536,
+    "rate_unit_rad_per_second": 1.52587890625e-12,
+    "legacy_rate_min": -2917,
+    "legacy_rate_max": 2917,
+    "rate_min": -191168512,
+    "rate_max": 191168512,
+    "rate_limit_hex": "0x0b650000",
+    "gave_offset_min": 0,
+    "gave_offset_max": 0,
+    "ttl_ticks_min": 1,
+    "ttl_ticks_max": 65535,
+    "integrated_ttl_ticks": 4095,
+    "integrated_renewal_ms": 1000,
+    "nominal_hook_hz": 2000,
+    "att_status": {
+      "success": 0,
+      "read_not_permitted": 2,
+      "request_not_supported": 6,
+      "invalid_offset": 7,
+      "invalid_attribute_length": 13,
+      "unlikely_error": 14,
+      "value_not_allowed": 19
+    }
+  },
+  "layout": [
+    {
+      "name": "yaw_rate_q16",
+      "offset": 0,
+      "type": "i32le",
+      "minimum": -191168512,
+      "maximum": 191168512,
+      "unit_rad_per_second": 1.52587890625e-12,
+      "representation": "signed_q16_16_legacy_counts",
+      "positive_observed_content_motion": "right"
+    },
+    {
+      "name": "pitch_rate_q16",
+      "offset": 4,
+      "type": "i32le",
+      "minimum": -191168512,
+      "maximum": 191168512,
+      "unit_rad_per_second": 1.52587890625e-12,
+      "representation": "signed_q16_16_legacy_counts",
+      "positive_observed_content_motion": "up"
+    },
+    {
+      "name": "roll_rate_q16",
+      "offset": 8,
+      "type": "i32le",
+      "minimum": -191168512,
+      "maximum": 191168512,
+      "unit_rad_per_second": 1.52587890625e-12,
+      "representation": "signed_q16_16_legacy_counts",
+      "positive_observed_content_motion": "counter_clockwise"
+    },
+    {
+      "name": "ttl_ticks",
+      "offset": 12,
+      "type": "u16le",
+      "minimum": 1,
+      "maximum": 65535,
+      "semantic": "raw_firmware_hook_ticks_not_milliseconds"
+    },
+    {
+      "name": "gave0_offset",
+      "offset": 14,
+      "type": "i16le",
+      "minimum": 0,
+      "maximum": 0,
+      "representation": "reserved_zero_unsupported_gave"
+    },
+    {
+      "name": "gave1_offset",
+      "offset": 16,
+      "type": "i16le",
+      "minimum": 0,
+      "maximum": 0,
+      "representation": "reserved_zero_unsupported_gave"
+    }
+  ],
+  "gave_offsets": {
+    "supported": false,
+    "admitted_minimum": 0,
+    "admitted_maximum": 0,
+    "nonzero_usage": "rejected_value_not_allowed",
+    "integrated_correction_offsets": [
+      0,
+      0
+    ],
+    "main_hooks_installed": 0,
+    "forwarded_to_cpu0": false,
+    "exact_cancel_offsets": [
+      0,
+      0
+    ]
+  },
+  "camera_focal_admission": {
+    "source": "latest_coherent_star_state",
+    "source_field": "focal_length_binary32",
+    "source_field_semantic": "focus_breathed_flact_mm",
+    "source_snapshot": "cached_worker_idle_hot_sampler",
+    "nominal_sample_hz": 10,
+    "required_state_for_initial_or_idle_replacement": {
+      "state_valid": true,
+      "worker": "running",
+      "operation": "idle",
+      "staged_catalog": false
+    },
+    "sample_on_initial_or_idle_replacement": true,
+    "capture_update_focal_policy": {
+      "latest_valid_cached_star_focal_preferred": true,
+      "worker_idle_and_operation_gate_bypassed": true,
+      "current_connection_last_valid_fallback": true,
+      "fallback_cleared_on_peer_detach": true,
+      "no_current_or_fallback_result": "reject",
+      "no_current_or_fallback_att_status": 14
+    },
+    "caller_provided": false,
+    "zero_or_no_coherent_state": {
+      "result": "reject",
+      "att_status": 14
+    },
+    "encoding_into_internal_mailbox": "floor(mm * 32) used by Linux conversion; not transmitted",
+    "internal_uq11_5_min": 1,
+    "internal_uq11_5_max": 31368,
+    "present_finite_out_of_range": {
+      "result": "reject",
+      "att_status": 19
+    },
+    "exact_cancel_bypasses_gate": true
+  },
+  "capture_active_update": {
+    "eligible_operations": [
+      "capture_pending",
+      "capture_stream"
+    ],
+    "same_connected_peer_required": true,
+    "preexisting_active_publication_required": false,
+    "prior_public_value_comparison": false,
+    "all_otherwise_valid_rate_fields_may_change": true,
+    "ttl_change_allowed": true,
+    "mailbox_publication": "convert_candidate_body_with_selected_cached_focal_and_queue_native_command",
+    "accepted_candidate_replaces_retained_active_value": true,
+    "client_renews_latest_att_acknowledged_value": true,
+    "exact_cancel_allowed": true,
+    "exact_cancel_requires_active_publication": false,
+    "cancel_clears_retained_active_value": true,
+    "detach_worker_loss_shutdown_clear_retained_active_value": true,
+    "same_connection_focal_fallback_survives_cancel_and_worker_loss": true,
+    "peer_detach_clears_same_connection_focal_fallback": true,
+    "write_without_att_response_is_ignored": true,
+    "server_timer": false,
+    "client_integrated_ttl_ticks": 4095,
+    "client_integrated_renewal_ms": 1000,
+    "mailbox_body_immutable_until_consumed": true,
+    "cpu0_per_axis_increment_read_coherent": false,
+    "cpu0_whole_vector_snapshot_atomic": false,
+    "cpu0_refresh_torn_reads_accepted": true
+  },
+  "internal_mailbox": {
+    "name": "native_command_mailbox",
+    "public_gatt_surface": false,
+    "value_size": 20,
+    "struct_format": "<IIIhhhH",
+    "linux_physical_payload_start": "0x2a2985fa4",
+    "linux_physical_payload_end": "0x2a2985fb7",
+    "linux_physical_length": "0x2a2985fb8",
+    "main_uncached_payload_start": "0xa2985fa4",
+    "main_uncached_payload_end": "0xa2985fb7",
+    "main_uncached_length": "0xa2985fb8",
+    "length_offset": 20,
+    "length_type": "u8",
+    "empty_length": 0,
+    "rate_body_length": 20,
+    "preposition_body_length": 14,
+    "in_flight_body_immutable": true,
+    "staged_preposition_occupies_mailbox": false,
+    "layout": [
+      {
+        "name": "fractional_increment",
+        "offset": 0,
+        "type": "u32le",
+        "count": 3
+      },
+      {
+        "name": "whole_increment",
+        "offset": 12,
+        "type": "i16le",
+        "count": 3
+      },
+      {
+        "name": "ttl_ticks",
+        "offset": 18,
+        "type": "u16le"
+      }
+    ]
+  },
+  "main_to_cpu0": {
+    "opcode": 55,
+    "transaction_size": 21,
+    "payload_size": 20,
+    "payload_source": "native_command_mailbox_body",
+    "payload_layout": "three_u32_fractions_three_i16_wholes_u16_ttl",
+    "gave_offsets_forwarded": false,
+    "cpu0_requires_exact_transaction_size": true,
+    "cpu0_copies_increment_bytes_before_ttl": 18,
+    "cpu0_commits_ttl_u16_last": true
+  },
+  "semantics": {
+    "active_requires_camera_live_focal": true,
+    "gatt_carries_focal": false,
+    "exact_cancel_hex": "000000000000000000000000000000000000",
+    "idle_active_value_replaces_prior_publication": true,
+    "publisher_waits_for_prior_ready_clear": true,
+    "publication_is_end_to_end_retirement_barrier": false,
+    "service_startup_publishes_cancel": true,
+    "active_peer_detach_publishes_cancel": true,
+    "active_worker_or_focal_authority_loss_publishes_cancel": true,
+    "active_service_shutdown_publishes_cancel": true,
+    "lifecycle_cancel_publication_is_best_effort": true,
+    "att_success": "validated_and_queued_for_main_mailbox",
+    "att_success_does_not_prove": [
+      "main_opcode_37_serialization",
+      "cpu0_admission",
+      "prior_correction_retirement",
+      "sensor_motion"
+    ],
+    "application_sequence": false,
+    "application_checksum": false,
+    "application_acknowledgement": false,
+    "application_authentication_field": false,
+    "active_requires_any_nonzero_body": true
+  },
+  "native_rate_conversion": {
+    "owner": "camera_linux",
+    "step_fraction_bits": 32,
+    "planar_gain_q16": "-(23*F + ((30694*F + 32768) >> 16))",
+    "focal_F": "floor(camera_FLact_mm * 32)",
+    "planar_step_q32": "public_rate_q16 * planar_gain_q16",
+    "roll_step_q32": "round_nearest_away_from_zero(public_roll_q16 * -192253 / 2048)",
+    "whole_increment": "floor(step_q32 / 4294967296)",
+    "fractional_increment": "step_q32 modulo 4294967296",
+    "fractional_residual_preserved_on_refresh": true,
+    "cpu0_state_address": "0x00000574",
+    "cpu0_state_bytes": 32
+  }
+}

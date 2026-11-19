@@ -1,0 +1,16 @@
+[package]
+name = "tetra3-index"
+description = "Checked zero-copy reader and deterministic writer for compact tetra3 indexes"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[features]
+mmap = ["dep:memmap2"]
+
+[dependencies]
+memmap2 = { workspace = true, optional = true }
+
+[dev-dependencies]
+tempfile.workspace = true

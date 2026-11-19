@@ -1,0 +1,102 @@
+{
+  "schema": "olympus-astro-rate-gatt-v2-golden-vectors/1",
+  "contract_schema": "../schema.json",
+  "vectors": [
+    {
+      "id": "cancel.exact_zero",
+      "kind": "cancel",
+      "direction": "phone_to_camera",
+      "characteristic": "rate",
+      "hex": "000000000000000000000000000000000000",
+      "expect": {
+        "cancel": true,
+        "yaw_rate_q16": 0,
+        "pitch_rate_q16": 0,
+        "roll_rate_q16": 0,
+        "ttl_ticks": 0,
+        "gave0_offset": 0,
+        "gave1_offset": 0
+      }
+    },
+    {
+      "id": "active.equator_roll_zero",
+      "kind": "active",
+      "direction": "phone_to_camera",
+      "characteristic": "rate",
+      "hex": "dbc926fd0000000000000000ff0f00000000",
+      "expect": {
+        "cancel": false,
+        "yaw_rate_q16": -47789605,
+        "pitch_rate_q16": 0,
+        "roll_rate_q16": 0,
+        "ttl_ticks": 4095,
+        "gave0_offset": 0,
+        "gave1_offset": 0
+      }
+    },
+    {
+      "id": "active.v1_promoted_equator_roll_zero",
+      "kind": "active",
+      "direction": "phone_to_camera",
+      "characteristic": "rate",
+      "hex": "000027fd0000000000000000102700000000",
+      "expect": {
+        "cancel": false,
+        "yaw_rate_q16": -47775744,
+        "pitch_rate_q16": 0,
+        "roll_rate_q16": 0,
+        "ttl_ticks": 10000,
+        "gave0_offset": 0,
+        "gave1_offset": 0
+      }
+    },
+    {
+      "id": "active.v1_promoted_solved_fixture",
+      "kind": "active",
+      "direction": "phone_to_camera",
+      "characteristic": "rate",
+      "hex": "0000b3fe00007600000082fd102700000000",
+      "expect": {
+        "cancel": false,
+        "yaw_rate_q16": -21823488,
+        "pitch_rate_q16": 7733248,
+        "roll_rate_q16": -41811968,
+        "ttl_ticks": 10000,
+        "gave0_offset": 0,
+        "gave1_offset": 0
+      }
+    },
+    {
+      "id": "active.component_and_unsigned_maxima",
+      "kind": "active",
+      "direction": "phone_to_camera",
+      "characteristic": "rate",
+      "hex": "0000650b00009bf4ffffffffffff00000000",
+      "expect": {
+        "cancel": false,
+        "yaw_rate_q16": 191168512,
+        "pitch_rate_q16": -191168512,
+        "roll_rate_q16": -1,
+        "ttl_ticks": 65535,
+        "gave0_offset": 0,
+        "gave1_offset": 0
+      }
+    },
+    {
+      "id": "active.minimum_nonzero",
+      "kind": "active",
+      "direction": "phone_to_camera",
+      "characteristic": "rate",
+      "hex": "010000000000000000000000010000000000",
+      "expect": {
+        "cancel": false,
+        "yaw_rate_q16": 1,
+        "pitch_rate_q16": 0,
+        "roll_rate_q16": 0,
+        "ttl_ticks": 1,
+        "gave0_offset": 0,
+        "gave1_offset": 0
+      }
+    }
+  ]
+}

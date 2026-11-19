@@ -1,0 +1,18 @@
+[package]
+name = "om-tetra3"
+description = "Android-oriented, flash-indexed implementation of the tetra3 lost-in-space plate solver"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[lib]
+name = "tetra3"
+
+[features]
+mmap = ["tetra3-index/mmap"]
+
+[dependencies]
+tetra3-core = { path = "../tetra3-core" }
+tetra3-index = { path = "../tetra3-index" }
+tetra3-lens = { path = "../tetra3-lens" }

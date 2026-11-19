@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.OmShutter.Launcher" parent="@style/Theme.OmShutter">
+        <item name="android:windowBackground">@color/night_splash_background</item>
+        <item name="android:statusBarColor">@color/night_splash_background</item>
+        <item name="android:navigationBarColor">@color/night_splash_background</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+    </style>
+</resources>

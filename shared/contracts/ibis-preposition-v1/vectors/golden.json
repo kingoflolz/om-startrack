@@ -1,0 +1,482 @@
+{
+  "schema": "olympus-ibis-preposition-v1-golden-vectors/1",
+  "contract_schema": "../schema.json",
+  "vectors": [
+    {
+      "id": "cancel.exact_zero",
+      "hex": "0000000000000000",
+      "expect": {
+        "x_counts": 0,
+        "y_counts": 0,
+        "roll_counts": 0,
+        "action": 0
+      },
+      "mailbox_hex": "0000000000000000000000005150",
+      "cpu0_tx_hex": "370000000000000000000000005150",
+      "mailbox_length": 14,
+      "app_admitted": true
+    },
+    {
+      "id": "stage.zero",
+      "hex": "0000000000000100",
+      "expect": {
+        "x_counts": 0,
+        "y_counts": 0,
+        "roll_counts": 0,
+        "action": 1
+      },
+      "mailbox_hex": "0000000000000000000000005150",
+      "cpu0_tx_hex": "370000000000000000000000005150",
+      "mailbox_length": 14,
+      "app_admitted": true
+    },
+    {
+      "id": "apply.zero",
+      "hex": "0000000000000200",
+      "expect": {
+        "x_counts": 0,
+        "y_counts": 0,
+        "roll_counts": 0,
+        "action": 2
+      },
+      "mailbox_hex": "0000000000000000000000005150",
+      "cpu0_tx_hex": "370000000000000000000000005150",
+      "mailbox_length": 14,
+      "app_admitted": true
+    },
+    {
+      "id": "stage.mixed_signed_counts",
+      "hex": "c0f94006d7f60100",
+      "expect": {
+        "x_counts": -1600,
+        "y_counts": 1600,
+        "roll_counts": -2345,
+        "action": 1
+      },
+      "mailbox_hex": "bb00b7f846ff4807ead0fdff5150",
+      "cpu0_tx_hex": "37bb00b7f846ff4807ead0fdff5150",
+      "mailbox_length": 14,
+      "app_admitted": true
+    },
+    {
+      "id": "apply.minimum_nonzero",
+      "hex": "0100ffff01000200",
+      "expect": {
+        "x_counts": 1,
+        "y_counts": -1,
+        "roll_counts": 1,
+        "action": 2
+      },
+      "mailbox_hex": "672a01009ad5feff3e0000005150",
+      "cpu0_tx_hex": "37672a01009ad5feff3e0000005150",
+      "mailbox_length": 14,
+      "app_admitted": true
+    },
+    {
+      "id": "stage.positive_legacy_planar_boundary",
+      "hex": "0807000000000100",
+      "expect": {
+        "x_counts": 1800,
+        "y_counts": 0,
+        "roll_counts": 0,
+        "action": 1
+      },
+      "mailbox_hex": "2f1f320800000000000000005150",
+      "cpu0_tx_hex": "372f1f320800000000000000005150",
+      "mailbox_length": 14,
+      "app_admitted": true
+    },
+    {
+      "id": "apply.negative_legacy_planar_boundary",
+      "hex": "f8f8000000000200",
+      "expect": {
+        "x_counts": -1800,
+        "y_counts": 0,
+        "roll_counts": 0,
+        "action": 2
+      },
+      "mailbox_hex": "d2e0cdf700000000000000005150",
+      "cpu0_tx_hex": "37d2e0cdf700000000000000005150",
+      "mailbox_length": 14,
+      "app_admitted": true
+    },
+    {
+      "id": "stage.legacy_positive_components",
+      "hex": "0807f8f8cd140100",
+      "expect": {
+        "x_counts": 1800,
+        "y_counts": -1800,
+        "roll_counts": 5325,
+        "action": 1
+      },
+      "mailbox_hex": "2f1f3208d2e0cdf792f504005150",
+      "cpu0_tx_hex": "372f1f3208d2e0cdf792f504005150",
+      "mailbox_length": 14,
+      "app_admitted": true
+    },
+    {
+      "id": "apply.legacy_negative_components",
+      "hex": "f8f8080733eb0200",
+      "expect": {
+        "x_counts": -1800,
+        "y_counts": 1800,
+        "roll_counts": -5325,
+        "action": 2
+      },
+      "mailbox_hex": "d2e0cdf72f1f32086f0afbff5150",
+      "cpu0_tx_hex": "37d2e0cdf72f1f32086f0afbff5150",
+      "mailbox_length": 14,
+      "app_admitted": true
+    },
+    {
+      "id": "wire.roll.above_maximum",
+      "hex": "00000000ce140100",
+      "expect": {
+        "x_counts": 0,
+        "y_counts": 0,
+        "roll_counts": 5326,
+        "action": 1
+      },
+      "app_admitted": false,
+      "mailbox_hex": "0000000000000000cff504005150",
+      "cpu0_tx_hex": "370000000000000000cff504005150",
+      "mailbox_length": 14
+    },
+    {
+      "id": "wire.roll.below_minimum",
+      "hex": "0000000032eb0200",
+      "expect": {
+        "x_counts": 0,
+        "y_counts": 0,
+        "roll_counts": -5326,
+        "action": 2
+      },
+      "app_admitted": false,
+      "mailbox_hex": "0000000000000000320afbff5150",
+      "cpu0_tx_hex": "370000000000000000320afbff5150",
+      "mailbox_length": 14
+    },
+    {
+      "id": "wire.planar.x_above_maximum",
+      "hex": "0907000000000100",
+      "expect": {
+        "x_counts": 1801,
+        "y_counts": 0,
+        "roll_counts": 0,
+        "action": 1
+      },
+      "app_admitted": true,
+      "mailbox_hex": "9549330800000000000000005150",
+      "cpu0_tx_hex": "379549330800000000000000005150",
+      "mailbox_length": 14
+    },
+    {
+      "id": "wire.planar.x_below_minimum",
+      "hex": "f7f8000000000200",
+      "expect": {
+        "x_counts": -1801,
+        "y_counts": 0,
+        "roll_counts": 0,
+        "action": 2
+      },
+      "app_admitted": true,
+      "mailbox_hex": "6cb6ccf700000000000000005150",
+      "cpu0_tx_hex": "376cb6ccf700000000000000005150",
+      "mailbox_length": 14
+    },
+    {
+      "id": "wire.planar.y_above_maximum",
+      "hex": "0000090700000100",
+      "expect": {
+        "x_counts": 0,
+        "y_counts": 1801,
+        "roll_counts": 0,
+        "action": 1
+      },
+      "app_admitted": true,
+      "mailbox_hex": "0000000095493308000000005150",
+      "cpu0_tx_hex": "370000000095493308000000005150",
+      "mailbox_length": 14
+    },
+    {
+      "id": "wire.planar.y_below_minimum",
+      "hex": "0000f7f800000200",
+      "expect": {
+        "x_counts": 0,
+        "y_counts": -1801,
+        "roll_counts": 0,
+        "action": 2
+      },
+      "app_admitted": true,
+      "mailbox_hex": "000000006cb6ccf7000000005150",
+      "cpu0_tx_hex": "37000000006cb6ccf7000000005150",
+      "mailbox_length": 14
+    },
+    {
+      "id": "wire.physical_stage.roll_is_not_capture_limit",
+      "hex": "0000000033530100",
+      "expect": {
+        "x_counts": 0,
+        "y_counts": 0,
+        "roll_counts": 21299,
+        "action": 1
+      },
+      "app_admitted": false,
+      "mailbox_hex": "00000000000000000ad613005150",
+      "cpu0_tx_hex": "3700000000000000000ad613005150",
+      "mailbox_length": 14
+    },
+    {
+      "id": "wire.physical_stage.planar_is_not_capture_limit",
+      "hex": "f209000000000200",
+      "expect": {
+        "x_counts": 2546,
+        "y_counts": 0,
+        "roll_counts": 0,
+        "action": 2
+      },
+      "app_admitted": true,
+      "mailbox_hex": "3ead970b00000000000000005150",
+      "cpu0_tx_hex": "373ead970b00000000000000005150",
+      "mailbox_length": 14
+    },
+    {
+      "id": "wire.planar.diagonal_exceeds_capture_limit",
+      "hex": "0907f7f800000100",
+      "expect": {
+        "x_counts": 1801,
+        "y_counts": -1801,
+        "roll_counts": 0,
+        "action": 1
+      },
+      "app_admitted": false,
+      "mailbox_hex": "954933086cb6ccf7000000005150",
+      "cpu0_tx_hex": "37954933086cb6ccf7000000005150",
+      "mailbox_length": 14
+    },
+    {
+      "id": "app.negative_x_boundary",
+      "hex": "0ef6000000000100",
+      "expect": {
+        "x_counts": -2546,
+        "y_counts": 0,
+        "roll_counts": 0,
+        "action": 1
+      },
+      "app_admitted": true,
+      "mailbox_hex": "c35268f400000000000000005150",
+      "cpu0_tx_hex": "37c35268f400000000000000005150",
+      "mailbox_length": 14
+    },
+    {
+      "id": "app.negative_y_boundary",
+      "hex": "00000ef600000100",
+      "expect": {
+        "x_counts": 0,
+        "y_counts": -2546,
+        "roll_counts": 0,
+        "action": 1
+      },
+      "app_admitted": true,
+      "mailbox_hex": "00000000c35268f4000000005150",
+      "cpu0_tx_hex": "3700000000c35268f4000000005150",
+      "mailbox_length": 14
+    },
+    {
+      "id": "app.negative_x_roll_boundary",
+      "hex": "7cf6000033eb0100",
+      "expect": {
+        "x_counts": -2436,
+        "y_counts": 0,
+        "roll_counts": -5325,
+        "action": 1
+      },
+      "app_admitted": true,
+      "mailbox_hex": "b68ae8f4000000006f0afbff5150",
+      "cpu0_tx_hex": "37b68ae8f4000000006f0afbff5150",
+      "mailbox_length": 14
+    },
+    {
+      "id": "app.negative_y_roll_boundary",
+      "hex": "000073f633eb0100",
+      "expect": {
+        "x_counts": 0,
+        "y_counts": -2445,
+        "roll_counts": -5325,
+        "action": 1
+      },
+      "app_admitted": true,
+      "mailbox_hex": "000000001d0ddef46f0afbff5150",
+      "cpu0_tx_hex": "37000000001d0ddef46f0afbff5150",
+      "mailbox_length": 14
+    },
+    {
+      "id": "app.negative_x_roll_beyond",
+      "hex": "7bf6000033eb0100",
+      "expect": {
+        "x_counts": -2437,
+        "y_counts": 0,
+        "roll_counts": -5325,
+        "action": 1
+      },
+      "app_admitted": false,
+      "mailbox_hex": "5060e7f4000000006f0afbff5150",
+      "cpu0_tx_hex": "375060e7f4000000006f0afbff5150",
+      "mailbox_length": 14
+    },
+    {
+      "id": "app.negative_y_roll_beyond",
+      "hex": "000072f633eb0100",
+      "expect": {
+        "x_counts": 0,
+        "y_counts": -2446,
+        "roll_counts": -5325,
+        "action": 1
+      },
+      "app_admitted": false,
+      "mailbox_hex": "00000000b7e2dcf46f0afbff5150",
+      "cpu0_tx_hex": "3700000000b7e2dcf46f0afbff5150",
+      "mailbox_length": 14
+    },
+    {
+      "id": "app.negative_circle_beyond",
+      "hex": "0ef6ffff00000100",
+      "expect": {
+        "x_counts": -2546,
+        "y_counts": -1,
+        "roll_counts": 0,
+        "action": 1
+      },
+      "app_admitted": false,
+      "mailbox_hex": "c35268f49ad5feff000000005150",
+      "cpu0_tx_hex": "37c35268f49ad5feff000000005150",
+      "mailbox_length": 14
+    },
+    {
+      "id": "app.positive_x_boundary",
+      "hex": "f209000000000200",
+      "expect": {
+        "x_counts": 2546,
+        "y_counts": 0,
+        "roll_counts": 0,
+        "action": 2
+      },
+      "app_admitted": true,
+      "mailbox_hex": "3ead970b00000000000000005150",
+      "cpu0_tx_hex": "373ead970b00000000000000005150",
+      "mailbox_length": 14
+    },
+    {
+      "id": "app.positive_y_boundary",
+      "hex": "0000f20900000200",
+      "expect": {
+        "x_counts": 0,
+        "y_counts": 2546,
+        "roll_counts": 0,
+        "action": 2
+      },
+      "app_admitted": true,
+      "mailbox_hex": "000000003ead970b000000005150",
+      "cpu0_tx_hex": "37000000003ead970b000000005150",
+      "mailbox_length": 14
+    },
+    {
+      "id": "app.positive_x_roll_boundary",
+      "hex": "84090000cd140200",
+      "expect": {
+        "x_counts": 2436,
+        "y_counts": 0,
+        "roll_counts": 5325,
+        "action": 2
+      },
+      "app_admitted": true,
+      "mailbox_hex": "4b75170b0000000092f504005150",
+      "cpu0_tx_hex": "374b75170b0000000092f504005150",
+      "mailbox_length": 14
+    },
+    {
+      "id": "app.positive_y_roll_boundary",
+      "hex": "00008d09cd140200",
+      "expect": {
+        "x_counts": 0,
+        "y_counts": 2445,
+        "roll_counts": 5325,
+        "action": 2
+      },
+      "app_admitted": true,
+      "mailbox_hex": "00000000e4f2210b92f504005150",
+      "cpu0_tx_hex": "3700000000e4f2210b92f504005150",
+      "mailbox_length": 14
+    },
+    {
+      "id": "app.positive_x_roll_beyond",
+      "hex": "85090000cd140200",
+      "expect": {
+        "x_counts": 2437,
+        "y_counts": 0,
+        "roll_counts": 5325,
+        "action": 2
+      },
+      "app_admitted": false,
+      "mailbox_hex": "b19f180b0000000092f504005150",
+      "cpu0_tx_hex": "37b19f180b0000000092f504005150",
+      "mailbox_length": 14
+    },
+    {
+      "id": "app.positive_y_roll_beyond",
+      "hex": "00008e09cd140200",
+      "expect": {
+        "x_counts": 0,
+        "y_counts": 2446,
+        "roll_counts": 5325,
+        "action": 2
+      },
+      "app_admitted": false,
+      "mailbox_hex": "000000004a1d230b92f504005150",
+      "cpu0_tx_hex": "37000000004a1d230b92f504005150",
+      "mailbox_length": 14
+    },
+    {
+      "id": "app.positive_circle_beyond",
+      "hex": "f209010000000200",
+      "expect": {
+        "x_counts": 2546,
+        "y_counts": 1,
+        "roll_counts": 0,
+        "action": 2
+      },
+      "app_admitted": false,
+      "mailbox_hex": "3ead970b672a0100000000005150",
+      "cpu0_tx_hex": "373ead970b672a0100000000005150",
+      "mailbox_length": 14
+    },
+    {
+      "id": "wire.positive_native_boundary",
+      "hex": "cf6dcf6dff7f0100",
+      "expect": {
+        "x_counts": 28111,
+        "y_counts": 28111,
+        "roll_counts": 32767,
+        "action": 1
+      },
+      "app_admitted": false,
+      "mailbox_hex": "9ad5fe7f9ad5fe7f34841e005150",
+      "cpu0_tx_hex": "379ad5fe7f9ad5fe7f34841e005150",
+      "mailbox_length": 14
+    },
+    {
+      "id": "wire.negative_native_boundary",
+      "hex": "3192319200800100",
+      "expect": {
+        "x_counts": -28111,
+        "y_counts": -28111,
+        "roll_counts": -32768,
+        "action": 1
+      },
+      "app_admitted": false,
+      "mailbox_hex": "672a0180672a0180907be1ff5150",
+      "cpu0_tx_hex": "37672a0180672a0180907be1ff5150",
+      "mailbox_length": 14
+    }
+  ]
+}

@@ -1,0 +1,220 @@
+{
+  "schema": "olympus-star-gatt-golden/1",
+  "catalogs": [
+    {
+      "name": "unavailable_catalog",
+      "hex": "00",
+      "decoded": {
+        "available": false,
+        "labels": []
+      }
+    },
+    {
+      "name": "two_shutter_labels",
+      "hex": "02023173023273",
+      "decoded": {
+        "available": true,
+        "labels": [
+          "1s",
+          "2s"
+        ]
+      }
+    }
+  ],
+  "states": [
+    {
+      "name": "cold_start_partial_state",
+      "hex": "070000000000000000000000000000000000000000000000ffffffffffffffff000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "expected": {
+        "flags": 0,
+        "publication_generation": 0,
+        "config_generation": 0,
+        "catalog_generation": 0,
+        "worker_generation": 0,
+        "actual_indices": [
+          255,
+          255,
+          255
+        ],
+        "recipe_indices": [
+          255,
+          255,
+          255
+        ],
+        "lens": ""
+      }
+    },
+    {
+      "name": "lens_command_only_valid",
+      "hex": "071004000000000000000000000000000000000000000000ffffffffffffffff00000000000000000000000000000000300000000000000000020000000080ff7f000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "expected": {
+        "flags": 16,
+        "publication_generation": 4,
+        "ibis_flags": 48,
+        "ibis_sequence": 0,
+        "ibis_q10": [
+          0,
+          0,
+          0
+        ],
+        "lens_command_generation": 2,
+        "lens_movestep_raw": [
+          -32768,
+          32767
+        ]
+      }
+    },
+    {
+      "name": "q10_valid_lens_command_mapped_invalid",
+      "hex": "071005000000000000000000000000000000000000000000ffffffffffffffff000000000000000000000000000000001f0900640038ff2c010000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "expected": {
+        "flags": 16,
+        "publication_generation": 5,
+        "ibis_flags": 31,
+        "ibis_sequence": 9,
+        "ibis_q10": [
+          100,
+          -200,
+          300
+        ],
+        "lens_command_generation": 0,
+        "lens_movestep_raw": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "name": "complete_idle_state",
+      "hex": "073f0a0000000300000007000000020000009cffc8002c010102030402050006000096430005030000040003e60001003f0900640038ff2c010c00000083fb7d040f0a0000000000e803f6ff0d4d2e5a55494b4f203330306d6d010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "expected": {
+        "flags": 63,
+        "config_generation": 3,
+        "catalog_generation": 7,
+        "actual_native": [
+          -100,
+          200,
+          300
+        ],
+        "actual_indices": [
+          1,
+          2,
+          3
+        ],
+        "recipe_indices": [
+          4,
+          2,
+          5
+        ],
+        "aperture_bounds": [
+          0,
+          6
+        ],
+        "detector": [
+          1280,
+          3,
+          1024,
+          768,
+          230,
+          1
+        ],
+        "ibis_flags": 63,
+        "ibis_q10": [
+          100,
+          -200,
+          300
+        ],
+        "lens_command_generation": 12,
+        "lens_movestep_raw": [
+          -1149,
+          1149
+        ],
+        "acceleration_mg": [
+          0,
+          1000,
+          -10
+        ],
+        "lens": "M.ZUIKO 300mm"
+      }
+    },
+    {
+      "name": "recovery_target_state",
+      "hex": "078f14000000090000000b00000004000000fffffefffdff0001020301040005000096430005030000040003e6000100000000000000000000000000000000000000000000000000000000000d4d2e5a55494b4f203330306d6d010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "expected": {
+        "flags": 143,
+        "config_generation": 9,
+        "catalog_generation": 11,
+        "actual_indices": [
+          0,
+          1,
+          2
+        ],
+        "recipe_indices": [
+          3,
+          1,
+          4
+        ]
+      }
+    }
+  ],
+  "writes": [
+    {
+      "name": "complete_compare_and_set_write",
+      "hex": "0603000000070000000102030402050005030000040003e6000100",
+      "current": {
+        "config_generation": 3,
+        "catalog_generation": 7,
+        "catalog_counts": [
+          10,
+          10,
+          10
+        ],
+        "aperture_bounds": [
+          0,
+          6
+        ],
+        "busy": false,
+        "recovery_target": false
+      },
+      "expected": {
+        "expected_config_generation": 3,
+        "expected_catalog_generation": 7,
+        "live_target_indices": [
+          1,
+          2,
+          3
+        ],
+        "recipe_indices": [
+          4,
+          2,
+          5
+        ],
+        "detector": [
+          1280,
+          3,
+          1024,
+          768,
+          230,
+          1
+        ]
+      }
+    }
+  ],
+  "leases": [
+    {
+      "name": "cancel_lease",
+      "hex": "0000",
+      "seconds": 0
+    },
+    {
+      "name": "phone_lease",
+      "hex": "2d00",
+      "seconds": 45
+    },
+    {
+      "name": "maximum_lease",
+      "hex": "7800",
+      "seconds": 120
+    }
+  ]
+}

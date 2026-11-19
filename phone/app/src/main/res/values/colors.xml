@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg">#101418</color>
+    <color name="panel">#1A2128</color>
+    <color name="panel_stroke">#34404B</color>
+    <color name="text_primary">#F3F7FA</color>
+    <color name="text_secondary">#AAB7C2</color>
+    <color name="accent">#63D3B1</color>
+    <color name="accent_dark">#143D34</color>
+    <!-- Neutral telemetry: IBIS axis magnitude is not a success/ready state. -->
+    <color name="ibis_meter">#AAB7C2</color>
+    <!-- Okabe-Ito hues; shape cues also distinguish these in red-only night mode. -->
+    <color name="star_pattern_match">#E69F00</color>
+    <color name="star_validation_match">#56B4E9</color>
+    <color name="danger">#FF6B6B</color>
+    <color name="disabled">#65717B</color>
+    <color name="black">#000000</color>
+    <color name="night_splash_background">#080000</color>
+    <color name="night_splash_icon">#300609</color>
+    <color name="night_splash_lens">#160204</color>
+</resources>

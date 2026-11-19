@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="panel_radius">16dp</dimen>
+    <dimen name="exposure_picker_height">120dp</dimen>
+    <dimen name="shutter_action_bar_height">80dp</dimen>
+    <dimen name="compact_ibis_visualization_height">112dp</dimen>
+</resources>

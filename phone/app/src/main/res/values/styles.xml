@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.OmShutter" parent="android:style/Theme.Material.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:statusBarColor">@color/bg</item>
+        <item name="android:navigationBarColor">@color/bg</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="android:colorAccent">@color/accent</item>
+        <item name="android:windowBackground">@color/bg</item>
+    </style>
+
+    <!-- Safe process-start window for both normal and persisted night mode. -->
+    <style name="Theme.OmShutter.Launcher" parent="@style/Theme.OmShutter">
+        <item name="android:windowBackground">@color/night_splash_background</item>
+        <item name="android:statusBarColor">@color/night_splash_background</item>
+        <item name="android:navigationBarColor">@color/night_splash_background</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+</resources>

@@ -1,0 +1,192 @@
+[
+  {
+    "offset": 157712,
+    "size": 70,
+    "file": "00026810.bin"
+  },
+  {
+    "offset": 157792,
+    "size": 55,
+    "file": "00026860.bin"
+  },
+  {
+    "offset": 157888,
+    "size": 29,
+    "file": "000268c0.bin"
+  },
+  {
+    "offset": 157920,
+    "size": 204,
+    "file": "000268e0.bin"
+  },
+  {
+    "offset": 158336,
+    "size": 422,
+    "file": "00026a80.bin"
+  },
+  {
+    "offset": 158784,
+    "size": 117,
+    "file": "00026c40.bin"
+  },
+  {
+    "offset": 159008,
+    "size": 97,
+    "file": "00026d20.bin"
+  },
+  {
+    "offset": 1304906,
+    "size": 7,
+    "file": "0013e94a.bin"
+  },
+  {
+    "offset": 1305005,
+    "size": 8,
+    "file": "0013e9ad.bin"
+  },
+  {
+    "offset": 1307290,
+    "size": 6,
+    "file": "0013f29a.bin"
+  },
+  {
+    "offset": 1336186,
+    "size": 2,
+    "file": "0014637a.bin"
+  },
+  {
+    "offset": 2187372,
+    "size": 4,
+    "file": "0021606c.bin"
+  },
+  {
+    "offset": 2187380,
+    "size": 4,
+    "file": "00216074.bin"
+  },
+  {
+    "offset": 11563555,
+    "size": 7,
+    "file": "00b07223.bin"
+  },
+  {
+    "offset": 25086642,
+    "size": 5,
+    "file": "017ecab2.bin"
+  },
+  {
+    "offset": 25086839,
+    "size": 5,
+    "file": "017ecb77.bin"
+  },
+  {
+    "offset": 25899162,
+    "size": 6,
+    "file": "018b309a.bin"
+  },
+  {
+    "offset": 25899239,
+    "size": 10,
+    "file": "018b30e7.bin"
+  },
+  {
+    "offset": 25899995,
+    "size": 7,
+    "file": "018b33db.bin"
+  },
+  {
+    "offset": 26248507,
+    "size": 7,
+    "file": "0190853b.bin"
+  },
+  {
+    "offset": 237915168,
+    "size": 1212,
+    "file": "0e2e4c20.bin"
+  },
+  {
+    "offset": 237921312,
+    "size": 270,
+    "file": "0e2e6420.bin"
+  },
+  {
+    "offset": 237922208,
+    "size": 61,
+    "file": "0e2e67a0.bin"
+  },
+  {
+    "offset": 237922336,
+    "size": 305,
+    "file": "0e2e6820.bin"
+  },
+  {
+    "offset": 237922848,
+    "size": 91,
+    "file": "0e2e6a20.bin"
+  },
+  {
+    "offset": 237923981,
+    "size": 2,
+    "file": "0e2e6e8d.bin"
+  },
+  {
+    "offset": 237924041,
+    "size": 2,
+    "file": "0e2e6ec9.bin"
+  },
+  {
+    "offset": 237924052,
+    "size": 2,
+    "file": "0e2e6ed4.bin"
+  },
+  {
+    "offset": 237924555,
+    "size": 2,
+    "file": "0e2e70cb.bin"
+  },
+  {
+    "offset": 237963871,
+    "size": 5,
+    "file": "0e2f0a5f.bin"
+  },
+  {
+    "offset": 237970513,
+    "size": 7,
+    "file": "0e2f2451.bin"
+  },
+  {
+    "offset": 237991853,
+    "size": 5,
+    "file": "0e2f77ad.bin"
+  },
+  {
+    "offset": 237991859,
+    "size": 12,
+    "file": "0e2f77b3.bin"
+  },
+  {
+    "offset": 238014908,
+    "size": 9,
+    "file": "0e2fd1bc.bin"
+  },
+  {
+    "offset": 238015842,
+    "size": 12,
+    "file": "0e2fd562.bin"
+  },
+  {
+    "offset": 238016429,
+    "size": 5,
+    "file": "0e2fd7ad.bin"
+  },
+  {
+    "offset": 238016542,
+    "size": 9,
+    "file": "0e2fd81e.bin"
+  },
+  {
+    "offset": 238019960,
+    "size": 4,
+    "file": "0e2fe578.bin"
+  }
+]

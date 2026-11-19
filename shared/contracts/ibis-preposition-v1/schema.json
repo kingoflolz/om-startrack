@@ -1,0 +1,204 @@
+{
+  "schema": "olympus-ibis-preposition-v1-contract/1",
+  "byte_order": "little-endian",
+  "uuids": {
+    "service": "7e6d7a50-2c56-4f17-9c51-9a5f64b02440",
+    "preposition": "7e6d7a50-2c56-4f17-9c51-9a5f64b02442"
+  },
+  "gatt": {
+    "extends_contract": "../astro-rate-gatt-v2/schema.json",
+    "characteristic_is_optional_for_older_camera_compatibility": true,
+    "properties": [
+      "write"
+    ],
+    "property_bits": 8,
+    "permissions": [
+      "write"
+    ],
+    "permission_bits": 16,
+    "write_procedure": "att_write_request",
+    "readable": false,
+    "cccd": false
+  },
+  "constants": {
+    "value_size": 8,
+    "struct_format": "<hhhH",
+    "main_consumption_timeout_ms": 1000,
+    "settle_delay_ms": 750,
+    "nominal_control_hz": 2000,
+    "att_status": {
+      "success": 0,
+      "read_not_permitted": 2,
+      "request_not_supported": 6,
+      "invalid_offset": 7,
+      "invalid_attribute_length": 13,
+      "unlikely_error": 14,
+      "value_not_allowed": 19
+    }
+  },
+  "layout": [
+    {
+      "name": "x_counts",
+      "offset": 0,
+      "type": "i16le"
+    },
+    {
+      "name": "y_counts",
+      "offset": 2,
+      "type": "i16le"
+    },
+    {
+      "name": "roll_counts",
+      "offset": 4,
+      "type": "i16le"
+    },
+    {
+      "name": "action",
+      "offset": 6,
+      "type": "u16le"
+    }
+  ],
+  "actions": {
+    "cancel": 0,
+    "stage_next_star_capture": 1,
+    "apply_during_app_half_press": 2
+  },
+  "admission": {
+    "units": "signed_cpu0_logical_position_counts",
+    "public_physical_axis_sign_calibration": false,
+    "cancel_requires_zero_axes": true,
+    "zero_axes_with_non_cancel_action_allowed": true,
+    "non_cancel_requires_star_idle": true,
+    "stock_combined_target_limits_remain_active": true,
+    "cpu0_defense": "stock_combined_target_and_actuator_limits; Linux_checks_native_representation_only",
+    "native_representation_constraint": "all converted native axes and their negations fit signed int32"
+  },
+  "internal_mailbox": {
+    "value_size": 14,
+    "allocation_size": 21,
+    "length_type": "u8",
+    "struct_format": "<iiiH",
+    "linux_physical_payload_start": "0x2a2985fa4",
+    "linux_physical_payload_end": "0x2a2985fb1",
+    "linux_physical_length": "0x2a2985fb8",
+    "main_uncached_payload_start": "0xa2985fa4",
+    "main_uncached_payload_end": "0xa2985fb1",
+    "main_uncached_length": "0xa2985fb8",
+    "published_body_length": 14,
+    "payload_publisher": "gatt_server_only",
+    "in_flight_body_immutable_until_consumed": true,
+    "staged_intent_is_linux_only": true,
+    "shares_payload_with_rate": true,
+    "publication_tag": 20561,
+    "publication_tag_hex": "0x5051",
+    "cancel_is_native_zero_vector_with_valid_tag": true,
+    "coordination_linux_physical": "0x2a2985fbc",
+    "coordination_type": "u8",
+    "coordination_states": {
+      "empty": 0,
+      "published": 1,
+      "staged": 2,
+      "requested": 3,
+      "consumed": 4,
+      "cancelled": 5
+    }
+  },
+  "main_to_cpu0": {
+    "opcode": 55,
+    "transaction_size": 15,
+    "payload_size": 14,
+    "payload_struct_format": "<iiiH",
+    "publication_tag": 20561,
+    "discriminator": "exact_transaction_size",
+    "astro_rate_transaction_size": 21,
+    "cpu0_copies_native_bias_bytes_before_tag": 12,
+    "cpu0_commits_tag_u16_last": true
+  },
+  "lifecycle": {
+    "stage_att_success": "validated_and_retained_as_server_intent_for_next_star_capture",
+    "apply_att_success": "validated_published_and_main_consumed_mailbox",
+    "cancel_att_success": "local_intent_invalidated_and_zero_command_queued_for_publication",
+    "star_sequence": [
+      "first_on",
+      "request_staged_intent_publication",
+      "wait_main_consumption",
+      "settle_delay",
+      "second_on"
+    ],
+    "app_sequence": [
+      "first_on",
+      "write_apply",
+      "wait_att_success",
+      "settle_delay",
+      "second_on"
+    ],
+    "apply_server_sequence": [
+      "retain_pending_intent",
+      "wait_prior_main_consumption",
+      "publish_apply",
+      "wait_own_main_consumption",
+      "att_success"
+    ],
+    "stage_wait_timeout_ms": 1000,
+    "main_consumption_timeout": "cancel_and_fail_before_second_on",
+    "cpu0_accepts_apply_in_detector_mode": 3,
+    "cpu0_capture_entry": "retain_active_offset_on_mode_3_to_1_and_retire_pending_command",
+    "cpu0_capture_exit": "clear_offset_before_stock_exit_processing",
+    "cpu0_offset_application": "add_before_native_integration_and_output_then_subtract_from_updated_accumulator",
+    "cpu0_software_slew": false,
+    "cpu0_capture_commands_change_active_offset": false,
+    "other_cpu0_mode_exit": "retire_temporary_command",
+    "att_success_does_not_prove": [
+      "cpu0_admission",
+      "actuator_position",
+      "actuator_settled",
+      "exposure_started"
+    ],
+    "application_generation": false,
+    "application_acknowledgement": false,
+    "physical_settle_acknowledgement": false,
+    "fixed_settle_delay_is_calibrated_guarantee": false,
+    "stage_att_success_occupies_main_mailbox": false,
+    "cpu0_pending_snapshot_atomic": false,
+    "cpu0_pending_publication_races_accepted": true,
+    "worker_coordination_atomic_compare_exchange": false,
+    "cpu0_preposition_producer_bounds": {
+      "detector_modes": [
+        1,
+        3
+      ],
+      "requires_nonzero_active_offset": true,
+      "planar_B4_counts": 16384,
+      "all_axis_B98_native": 1879048192,
+      "restored_from_stock_each_tick": true
+    },
+    "cpu0_preposition_geometry": "stock_coupled_builder_while_PRE_guard_active"
+  },
+  "native_conversion": {
+    "owner": "camera_linux",
+    "planar": "ceil(logical_counts * 134217728 / 1757)",
+    "roll": "ceil(logical_counts * 262144 / 4295)",
+    "rounding": "signed_mathematical_ceiling",
+    "cpu0_pending_address": "0x00000558",
+    "cpu0_pending_bytes": 16,
+    "cpu0_active_address": "0x00000568",
+    "cpu0_active_bytes": 12
+  },
+  "app_policy": {
+    "planar_limit_counts": 2546,
+    "planar_radius_counts": 2546,
+    "roll_limit_counts": 5325,
+    "coupled_planar_base_counts": 2700,
+    "coupled_x_roll_coefficient": 1628,
+    "coupled_y_roll_coefficient": 1571,
+    "coupled_roll_divisor": 32768,
+    "planar_component_constraint": "abs(x) <= planar_limit_counts and abs(y) <= planar_limit_counts",
+    "planar_constraint": "x*x + y*y <= planar_radius_counts*planar_radius_counts",
+    "roll_constraint": "abs(roll) <= roll_limit_counts",
+    "coupled_x_constraint": "abs(x) <= coupled_planar_base_counts - floor(abs(roll)*coupled_x_roll_coefficient/coupled_roll_divisor)",
+    "coupled_y_constraint": "abs(y) <= coupled_planar_base_counts - floor(abs(roll)*coupled_y_roll_coefficient/coupled_roll_divisor)",
+    "owner": "android_app",
+    "firmware_enforces_app_geometry": false,
+    "capability_autodetection": false
+  }
+}

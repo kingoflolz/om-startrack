@@ -1,0 +1,104 @@
+{
+  "om1": {
+    "om1-stars": [
+      {
+        "symbol": "kApertureNative85",
+        "input_offset": 6229648,
+        "size": 80
+      },
+      {
+        "symbol": "kApertureNative128",
+        "input_offset": 6229728,
+        "size": 54
+      },
+      {
+        "symbol": "kApertureNative256",
+        "input_offset": 1016423,
+        "size": 28
+      },
+      {
+        "symbol": "kApertureNominalDeci85",
+        "input_offset": 7136918,
+        "size": 80
+      },
+      {
+        "symbol": "kApertureNominalDeci128",
+        "input_offset": 7137000,
+        "size": 54
+      },
+      {
+        "symbol": "kApertureNominalDeci256",
+        "input_offset": 7137056,
+        "size": 28
+      },
+      {
+        "symbol": "kAperturePow2Fraction",
+        "input_offset": 2084016,
+        "size": 512
+      }
+    ],
+    "star_gatt_server": [
+      {
+        "symbol": "astro_assist_acceleration_commit_anchor",
+        "input_offset": 392600,
+        "size": 32
+      },
+      {
+        "symbol": "astro_assist_acceleration_remap_anchor",
+        "input_offset": 393116,
+        "size": 32
+      }
+    ]
+  },
+  "om1ii": {
+    "om1-stars": [
+      {
+        "symbol": "kApertureNative85",
+        "input_offset": 6132776,
+        "size": 80
+      },
+      {
+        "symbol": "kApertureNative128",
+        "input_offset": 6132856,
+        "size": 54
+      },
+      {
+        "symbol": "kApertureNative256",
+        "input_offset": 1030807,
+        "size": 28
+      },
+      {
+        "symbol": "kApertureNominalDeci85",
+        "input_offset": 7026846,
+        "size": 80
+      },
+      {
+        "symbol": "kApertureNominalDeci128",
+        "input_offset": 7026928,
+        "size": 54
+      },
+      {
+        "symbol": "kApertureNominalDeci256",
+        "input_offset": 7026984,
+        "size": 28
+      },
+      {
+        "symbol": "kAperturePow2Fraction",
+        "input_offset": 2110108,
+        "size": 512
+      }
+    ],
+    "star_gatt_server": [
+      {
+        "symbol": "astro_assist_acceleration_commit_anchor",
+        "input_offset": 399438,
+        "size": 32
+      },
+      {
+        "symbol": "astro_assist_acceleration_remap_anchor",
+        "input_offset": 399954,
+        "size": 32
+      }
+    ]
+  }
+}

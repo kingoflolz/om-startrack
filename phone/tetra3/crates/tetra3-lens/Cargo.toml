@@ -1,0 +1,10 @@
+[package]
+name = "tetra3-lens"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+description = "Checked pixel-to-ray lens correction for tetra3"
+
+[lints.rust]
+unsafe_code = "forbid"

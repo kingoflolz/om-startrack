@@ -1,0 +1,20 @@
+{
+  "hex_replacements": {},
+  "text_replacements": [
+    {
+      "path": "camera/linux/star-worker/orf.cpp",
+      "old": "{'S', '0', '0', '9', '5', 0}",
+      "new": "{'S', '0', '1', '2', '1', 0}"
+    },
+    {
+      "path": "camera/linux/star-worker/orf.cpp",
+      "old": "0x2040, 201,",
+      "new": "0x2040, 199,"
+    },
+    {
+      "path": "camera/linux/star-worker/orf.cpp",
+      "old": "ORF CameraType2 is not OM-1",
+      "new": "ORF CameraType2 is not OM-1 Mark II"
+    }
+  ]
+}
